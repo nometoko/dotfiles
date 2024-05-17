@@ -1,0 +1,15 @@
+(setq user-section-table '(
+("subsubsection*")
+("footnotemark")
+("begin")
+))
+
+(setq YaTeX:documentclass-options-private '(
+("jsarticle")
+))
+(setq user-env-table '(
+("itembox")
+))
+(setq YaTeX::usepackage-alist-private '(
+("here")
+))
