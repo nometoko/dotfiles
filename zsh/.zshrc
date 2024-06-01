@@ -68,7 +68,7 @@ ZSH_THEME="mytheme"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git aliases zsh-autosuggestions zsh-syntax-highlighting you-should-use)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -98,36 +98,18 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+for file in ~/.zsh/*.zsh; do
+  source $file
+done
 
-setopt hist_reduce_blanks     # ignore blank
-setopt hist_ignore_all_dups   # don't save the same history to .zsh_history
-setopt numeric_glob_sort      # sort by number when numbers are included in file-names
-setopt CHASE_LINKS            # when you move to symbolic link, you will be move to the place it links
-setopt ignoreeof
-setopt correct
-unsetopt beep
+source /opt/local/share/fzf/shell/key-bindings.zsh
+source /opt/local/share/fzf/shell/completion.zsh
 
-alias sz="source ~/.zshrc"
-alias ez="emacs ~/.zshrc"
-alias del="mv $* ~/.Trash/"
-alias emacs="/Applications/MacPorts/Emacs.app/Contents/MacOS/Emacs -nw"
-alias ls="ls -G -F"
-alias history=" omz_history"       # don't save history to .zsh_history
-#alias diff="diff -y"
-alias jupyter="/opt/local/Library/Frameworks/Python.framework/Versions/3.11/bin/jupyter-lab"
-alias venv="source ./.venv/bin/activate"
+eval "$(zoxide init zsh)"
 
-export JAVA_HOME=`/usr/libexec/java_home`
-#export EDITOR="/Applications/MacPorts/Emacs.app/Contents/MacOS/Emacs"
-export PATH=$PATH:/Applications/LibreOffice.app/Contents/MacOS
 autoload -U colors compinit
-colors
-compinit
-
-zstyle ':completion:*default' menu select=1
-
-[ -n "`alias run-help`" ] && unalias run-help
 autoload run-help
+
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<'
 
 # 以下の拡張子を持つファイルは保管候補に出さない
@@ -136,9 +118,12 @@ fignore=(.o .aux .log .bbl .blg .lof .lot .toc .a\~)
 # cdするたびにls
 chpwd() {
 	if [[ $(pwd) != $HOME ]]; then;
-		ls
+		ls -a
 	fi
 }
 
 #exec emacsexec -q -nw "$@"
 #export EDITOR='emacsexec'
+PS1='$(show_virtual_env)'$PS1
+
+if whence direnv &>/dev/null; then eval "$(direnv hook zsh)"; fi

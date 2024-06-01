@@ -1,4 +1,4 @@
-IGNORE_PATTERN="^\.(git|travis)"
+IGNORE_PATTERN="^\.(git|travis|DS_Store)"
 
 # シンボリックリンクの作成
 # ホームディレクトリ直下に作成する
