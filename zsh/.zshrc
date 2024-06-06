@@ -26,7 +26,7 @@ ZSH_THEME="mytheme"
 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
+zstyle ':omz:update' mode auto      # update automatically without asking
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
@@ -105,8 +105,6 @@ done
 source /opt/local/share/fzf/shell/key-bindings.zsh
 source /opt/local/share/fzf/shell/completion.zsh
 
-eval "$(zoxide init zsh)"
-
 autoload -U colors compinit
 autoload run-help
 
@@ -122,8 +120,7 @@ chpwd() {
 	fi
 }
 
-#exec emacsexec -q -nw "$@"
-#export EDITOR='emacsexec'
 PS1='$(show_virtual_env)'$PS1
 
 if whence direnv &>/dev/null; then eval "$(direnv hook zsh)"; fi
+eval "$(zoxide init zsh)"
