@@ -124,3 +124,4 @@ PS1='$(show_virtual_env)'$PS1
 
 if whence direnv &>/dev/null; then eval "$(direnv hook zsh)"; fi
 eval "$(zoxide init zsh)"
+eval "$(gh completion -s zsh)"

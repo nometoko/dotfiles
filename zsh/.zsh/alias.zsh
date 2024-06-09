@@ -1,5 +1,6 @@
 alias sz="source ~/.zshrc"
 alias ez="emacs ~/.zshrc"
+alias cz="code ~/.zshrc"
 alias del="mv $* ~/.Trash/"
 alias emacs="/Applications/MacPorts/Emacs.app/Contents/MacOS/Emacs -nw"
 alias ls="ls -G -F"
