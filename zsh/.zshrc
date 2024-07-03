@@ -11,6 +11,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="mytheme"
 
+export PKG_CONFIG_PATH="/opt/local/lib/pkg-config:/opt/local/lib/opencv4/pkgconfig"
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -99,7 +100,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 for file in ~/.zsh/*.zsh; do
-  source $file
+	source $file
 done
 
 source /opt/local/share/fzf/shell/key-bindings.zsh
@@ -111,7 +112,7 @@ autoload run-help
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<'
 
 # 以下の拡張子を持つファイルは保管候補に出さない
-fignore=(.o .aux .log .bbl .blg .lof .lot .toc .a\~)
+fignore=(.o .aux .log .bbl .blg .lof .dvi .fls .fdb_latexmk .synctex.gz .lot .toc .out .a\~)
 
 # cdするたびにls
 chpwd() {
@@ -121,7 +122,6 @@ chpwd() {
 }
 
 PS1='$(show_virtual_env)'$PS1
-
 if whence direnv &>/dev/null; then eval "$(direnv hook zsh)"; fi
 eval "$(zoxide init zsh)"
 eval "$(gh completion -s zsh)"
