@@ -31,10 +31,11 @@ set_alias_if_path_exists $jupyterPath jupyter "$jupyterPath"
 # alias jupyter="/opt/local/bin/jupyter-lab-3.11"
 unset jupyterPath
 
+
 alias venv='source ./.venv/bin/activate'
 alias c="clear"
 alias ls="/bin/ls -G -F"
-alias la='/bin/ls -a'
+alias la='/bin/ls -G -F -a'
 
 set_alias_if_exists direnv da 'direnv allow'
 # alias da='direnv allow'
@@ -59,7 +60,11 @@ set_alias_if_exists tldr tldr 'tldr --pager'
 set_alias_if_exists bat cat 'bat'
 # alias cat='bat'
 
+# btm option
 set_alias_if_exists btm btm 'btm --color default-light'
 # alias btm='btm --color default-light'
+
+# lazygit
+set_alias_if_exists lazygit lz 'lazygit'
 
 [ -n "`alias run-help`" ] && unalias run-help

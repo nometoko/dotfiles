@@ -102,8 +102,13 @@ for file in ~/.zsh/*.zsh; do
 	source $file
 done
 
-source /opt/local/share/fzf/shell/key-bindings.zsh
-source /opt/local/share/fzf/shell/completion.zsh
+# for fzf
+if [ -f "/opt/local/share/fzf/shell/key-bindings.zsh" ]; then
+    source /opt/local/share/fzf/shell/key-bindings.zsh
+fi
+if [ -f "/opt/local/share/fzf/shell/completion.zsh" ]; then
+    source /opt/local/share/fzf/shell/completion.zsh
+fi
 
 autoload -U colors compinit
 autoload run-help
@@ -142,4 +147,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-

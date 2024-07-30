@@ -1,14 +1,13 @@
 # myDotfiles
+
 ## Requirements
+
 oh-my-zsh has to be installed.
 
+## Recommended Commands
 
-Also, you have to install some commandlines to use my dotfiles
 ### Installation via MacPorts
-`
-sudo port selfupdate
-`
 
-`
-sudo port intall bat fzf fd icdiff gh direnv
-`
+`sudo port selfupdate`
+
+`sudo port install bat fzf fd icdiff gh direnv tldr`
