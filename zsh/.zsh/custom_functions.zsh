@@ -5,35 +5,30 @@ done-notify() {
   osascript -e 'display notification "'"$var finished!"'" with title "Terminal"'
 }
 
+# for direnv
 show_virtual_env() {
   if [[ -n "$VIRTUAL_ENV" && -n "$DIRENV_DIR" ]]; then
     echo "($(basename $VIRTUAL_ENV))"
   fi
 }
+export PS1='$(show_virtual_env)'$PS1
 
 # fd - cd to selected directory
-fcd() {
-  local dir
-  dir=$(find ${1:-.} -path '*/\.*' -prune -o -name "Library" -prune -o -name "Pictures" -prune -o -type d -print 2> /dev/null | fzf +m) &&
-  cd "$dir"
-}
+if command -v fzf &>/dev/null;
+then
+  fcd() {
+    local dir
+    dir=$(find ${1:-.} -path '*/\.*' -prune -o -name "Library" -prune -o -name "Pictures" -prune -o -type d -print 2> /dev/null | fzf +m) &&
+    cd "$dir"
+  }
+fi
 
-subst-transparent(){
+# convert to pdf
+to-pdf(){
   filename="$1"
-  python ~/illustlation/substTransparent.py -f "$1"
-  tmpFilename="${filename%.*}_withBG.${filename#*.}"
   filename_pdf="${filename%.*}.pdf"
-  convert $tmpFilename $filename_pdf
-  rm $tmpFilename
-}
-
-get-contours(){
-  filename="$1"
-  python ~/illustlation/makeContours.py -f "$1"
-  tmpFilename="${filename%.*}_Contours.${filename#*.}"
-  filename_pdf="${filename%.*}_Contours.pdf"
-  convert $tmpFilename $filename_pdf
-  rm $tmpFilename
+  convert $filename $filename_pdf
+  rm $filename
 }
 
 del(){
@@ -41,6 +36,7 @@ del(){
   mv $1 ~/.Trash/
 }
 
+# pwd 直下のファイル名にスペースが含まれている場合、アンダーバーに置換
 replace-space(){
   for file in "."/*; do
       # ファイル名にスペースが含まれているか確認
@@ -55,20 +51,4 @@ replace-space(){
           echo "Renamed: '$file' -> '$new_file'"
       fi
   done
-}
-
-replace-space-rec(){
-  # 変換対象ディレクトリを指定（デフォルトはカレントディレクトリ）
-
-# ディレクトリ内の全てのファイルとディレクトリを検索し、スペースをアンダーバーに置換
-  find . | while IFS= read -r file; do
-    # 新しいファイル/ディレクトリ名を作成（スペースをアンダーバーに置換）
-    new_file=$(echo "$file" | tr ' ' '_')
-    
-    # 名前に変更がある場合のみ、名前を変更
-    if [[ "$file" != "$new_file" ]]; then
-      mv "$file" "$new_file"
-      echo "Renamed: '$file' -> '$new_file'"
-    fi
-done
 }

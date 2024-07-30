@@ -4,5 +4,5 @@ setopt numeric_glob_sort      # sort by number when numbers are included in file
 setopt CHASE_LINKS            # when you move to symbolic link, you will be move to the place it links
 setopt ignoreeof
 setopt correct
-unsetopt beep
 setopt PROMPT_SUBST           # for Direnv
+unsetopt beep

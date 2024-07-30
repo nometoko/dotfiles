@@ -11,7 +11,6 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="mytheme"
 
-export PKG_CONFIG_PATH="/opt/local/lib/pkg-config:/opt/local/lib/opencv4/pkgconfig"
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -121,7 +120,26 @@ chpwd() {
 	fi
 }
 
-PS1='$(show_virtual_env)'$PS1
 if whence direnv &>/dev/null; then eval "$(direnv hook zsh)"; fi
-eval "$(zoxide init zsh)"
-eval "$(gh completion -s zsh)"
+if command -v zoxide &>/dev/null; then eval "$(zoxide init zsh)"; fi
+# # eval "$(zoxide init zsh)"
+if command -v gh &>/dev/null; then eval "$(gh completion -s zsh)"; fi
+# # eval "$(gh completion -s zsh)"
+if command -v thefuck &>/dev/null; then eval "$(thefuck --alias)"; fi
+# # eval "$(thefuck --alias)"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/iwamoto/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/iwamoto/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/iwamoto/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/iwamoto/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
