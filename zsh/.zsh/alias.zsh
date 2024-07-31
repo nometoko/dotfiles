@@ -18,7 +18,6 @@ set_alias_if_exists $FijiPath fiji "$FijiPath"
 # alias fiji='/Applications/Fiji.app/Contents/MacOS/ImageJ-macosx'
 unset FijiPath
 
-
 alias sz='source ~/.zshrc'
 set_alias_if_exists emacs ez 'emacs ~/.zshrc'
 # alias ez='emacs ~/.zshrc'
@@ -31,8 +30,6 @@ set_alias_if_path_exists $jupyterPath jupyter "$jupyterPath"
 # alias jupyter="/opt/local/bin/jupyter-lab-3.11"
 unset jupyterPath
 
-
-alias venv='source ./.venv/bin/activate'
 alias c="clear"
 alias ls="/bin/ls -G -F"
 alias la='/bin/ls -G -F -a'

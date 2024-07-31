@@ -10,4 +10,4 @@ oh-my-zsh has to be installed.
 
 `sudo port selfupdate`
 
-`sudo port install bat fzf fd icdiff gh direnv tldr`
+`sudo port install bat fzf fd icdiff gh direnv tldr tig`

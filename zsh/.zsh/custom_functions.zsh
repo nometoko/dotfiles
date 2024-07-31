@@ -52,3 +52,12 @@ replace-space(){
       fi
   done
 }
+
+venv(){
+  if [ -e "./.venv/bin/activate" ]; then
+    source ./.venv/bin/activate
+  else
+    python -m venv .venv
+    source ./.venv/bin/activate
+  fi
+}
