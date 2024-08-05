@@ -9,9 +9,10 @@ set_alias_if_path_exists() {
 }
 
 EmacsPath="/Applications/MacPorts/Emacs.app/Contents/MacOS/Emacs"
-set_alias_if_path_exists $EmacsPath emacs "$EmacsPath -nw"
-# alias emacs='/Applications/MacPorts/Emacs.app/Contents/MacOS/Emacs -nw'
+set_alias_if_path_exists $EmacsPath emacs "$EmacsPath"
 unset EmacsPath
+
+set_alias_if_exists emacs emacs "emacs -nw"
 
 FijiPath='/Applications/Fiji.app/Contents/MacOS/ImageJ-macosx'
 set_alias_if_exists $FijiPath fiji "$FijiPath"
@@ -31,8 +32,20 @@ set_alias_if_path_exists $jupyterPath jupyter "$jupyterPath"
 unset jupyterPath
 
 alias c="clear"
-alias ls="/bin/ls -G -F"
-alias la='/bin/ls -G -F -a'
+alias ls="/bin/ls -G -F --color=auto"
+alias -g G="| grep --color=auto"
+
+if [ -z "`alias la`" ]; then
+    alias la='ls -a'
+fi
+if [ -z "`alias ll`" ]; then
+    alias ll='ls -lh'
+fi
+
+if [ -z "`alias l`" ]; then
+    alias l='ls -lah'
+fi
+
 
 set_alias_if_exists direnv da 'direnv allow'
 # alias da='direnv allow'
