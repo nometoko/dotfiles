@@ -9,10 +9,8 @@ set_alias_if_path_exists() {
 }
 
 EmacsPath="/Applications/MacPorts/Emacs.app/Contents/MacOS/Emacs"
-set_alias_if_path_exists $EmacsPath emacs "$EmacsPath"
+set_alias_if_path_exists $EmacsPath emacs "$EmacsPath -nw"
 unset EmacsPath
-
-set_alias_if_exists emacs emacs "emacs -nw"
 
 FijiPath='/Applications/Fiji.app/Contents/MacOS/ImageJ-macosx'
 set_alias_if_exists $FijiPath fiji "$FijiPath"
@@ -33,17 +31,15 @@ unset jupyterPath
 
 alias c="clear"
 alias ls="/bin/ls -G -F --color=auto"
+alias la='ls -A'
 alias -g G="| grep --color=auto"
 
-if [ -z "`alias la`" ]; then
-    alias la='ls -a'
-fi
 if [ -z "`alias ll`" ]; then
     alias ll='ls -lh'
 fi
 
 if [ -z "`alias l`" ]; then
-    alias l='ls -lah'
+    alias l='ls -lAh'
 fi
 
 
@@ -51,8 +47,10 @@ set_alias_if_exists direnv da 'direnv allow'
 # alias da='direnv allow'
 set_alias_if_exists tree tree 'tree -a -I "\.DS.Store|\.git|\.venv"'
 # alias tree='tree -a -I "\.DS.Store|\.git|\.venv"'
-set_alias_if_exists code cz 'code ~/.zshrc'
+set_alias_if_exists code cz 'code ~/.zsh'
 # alias cz="code ~/.zshrc"
+set_alias_if_exists code c. 'code .'
+
 set_alias_if_exists icdiff diff 'icdiff -H -N'
 # alias diff="icdiff -H -N"
 set_alias_if_exists fzf fz 'fzf-noempty --bind "tab:toggle,shift-tab:toggle+beginning-of-line+kill-line,ctrl-j:toggle+beginning-of-line+kill-line,ctrl-t:top" --color=light -1 -m'
