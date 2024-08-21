@@ -17,16 +17,16 @@ fi
 
 # for bat command
 if [ -n "`command -v bat 2>&1`" ]; then
-    export BAT_THEME='GitHub'
+    export BAT_THEME='Monokai Extended Origin'
 fi
 
 # for fzf command
 if [ -n "`command -v fzf 2>&1`" ]; then
     export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --follow --exclude .git --exclude .venv --exclude "CloudStorage"'
     export FZF_DEFAULT_OPTS='--preview "bat  --color=always --style=header,grid --line-range :100 {}"'
-    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND -H"
+    export FZF_CTRL_T_OPTS='--preview "bat  --color=always --style=header,grid --line-range :100 {}" --delimiter '/' --nth -1'
 fi
-
 
 if [ -d $HOME/Library/Mobile\ Documents ]; then
     export ICLOUD_PATH=$HOME/Library/Mobile\ Documents
@@ -34,6 +34,7 @@ fi
 
 # for X11
 export DISPLAY=:0
+
 # preamble file path for LaTeX
 if [ -d $HOME/tex ]; then
     export TEXINPUTS=.:$HOME/tex:
@@ -46,9 +47,9 @@ fi
 
 # for pkg-config (opencv4)
 if [ -d /opt/local/lib/pkgconfig ]; then
-    export PKG_CONFIG_PATH="/opt/local/lib/pkgconfig"
+    export PKG_CONFIG_PATH=/opt/local/lib/pkgconfig
 fi
 
 if [ -d /opt/local/lib/opencv4/pkgconfig ]; then
-    export PKG_CONFIG_PATH="/opt/local/lib/opencv4/pkgconfig:$PKG_CONFIG_PATH"
+    export PKG_CONFIG_PATH=/opt/local/lib/opencv4/pkgconfig:$PKG_CONFIG_PATH
 fi

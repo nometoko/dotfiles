@@ -103,10 +103,10 @@ for file in ~/.zsh/*.zsh; do
 done
 
 # for fzf
-if [ -f "/opt/local/share/fzf/shell/key-bindings.zsh" ]; then
+if [ -f /opt/local/share/fzf/shell/key-bindings.zsh ]; then
     source /opt/local/share/fzf/shell/key-bindings.zsh
 fi
-if [ -f "/opt/local/share/fzf/shell/completion.zsh" ]; then
+if [ -f /opt/local/share/fzf/shell/completion.zsh ]; then
     source /opt/local/share/fzf/shell/completion.zsh
 fi
 

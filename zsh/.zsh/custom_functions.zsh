@@ -17,7 +17,7 @@ export PS1='$(show_virtual_env)'$PS1
 if [ -n "`command -v fzf 2>&1`" ]; then
   fcd() {
     local dir
-    dir=$(find ${1:-.} -path '*/\.*' -prune -o -name "Library" -prune -o -name "Pictures" -prune -o -type d -print 2> /dev/null | fzf +m) &&
+    dir=$(find ${1:-.} -path '*/\.*' -prune -o -name "Library" -prune -o -name "Pictures" -prune -o -type d -print 2> /dev/null | fzf +m --delimiter '/' --nth -1) &&
     cd "$dir"
   }
 fi
