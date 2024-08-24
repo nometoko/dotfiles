@@ -17,7 +17,11 @@ fi
 
 # for bat command
 if [ -n "`command -v bat 2>&1`" ]; then
-    export BAT_THEME='Monokai Extended Origin'
+    if [[ "$TERM" == "xterm-256color" ]]; then
+        export BAT_THEME='GitHub'
+    elif [[ "$TERM" == "xterm-kitty" ]]; then
+        export BAT_THEME='MyTheme'
+    fi
 fi
 
 # for fzf command
