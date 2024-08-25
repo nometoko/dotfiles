@@ -30,8 +30,13 @@ set_alias_if_path_exists $jupyterPath jupyter "$jupyterPath"
 unset jupyterPath
 
 alias c="clear"
+alias e="exit"
 alias ls="/bin/ls -G -F --color=auto"
 alias la='ls -A'
+alias lt='ls -t'
+alias lat='ls -At'
+alias llt='ls -lt'
+alias llat='ls -lAt'
 alias -g G="| grep --color=auto"
 
 if [ -z "`alias ll`" ]; then
