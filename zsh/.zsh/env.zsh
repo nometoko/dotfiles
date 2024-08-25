@@ -27,7 +27,7 @@ fi
 # for fzf command
 if [ -n "`command -v fzf 2>&1`" ]; then
     export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --follow --exclude .git --exclude .venv --exclude "CloudStorage"'
-    export FZF_DEFAULT_OPTS='--preview "bat  --color=always --style=header,grid --line-range :100 {}"'
+    export FZF_DEFAULT_OPTS='--preview "bat  --color=always --style=header,grid --line-range :100 {}" --delimiter / --nth -1'
     export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND -H"
     export FZF_CTRL_T_OPTS='--preview "bat  --color=always --style=header,grid --line-range :100 {}" --delimiter '/' --nth -1'
 fi

@@ -98,6 +98,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+autoload -U colors compinit
+autoload run-help
+colors
+compinit
+
+
 for file in ~/.zsh/*.zsh; do
 	source $file
 done
@@ -109,9 +115,6 @@ fi
 if [ -f /opt/local/share/fzf/shell/completion.zsh ]; then
     source /opt/local/share/fzf/shell/completion.zsh
 fi
-
-autoload -U colors compinit
-autoload run-help
 
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<'
 

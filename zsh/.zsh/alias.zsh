@@ -37,6 +37,7 @@ alias lt='ls -t'
 alias lat='ls -At'
 alias llt='ls -lt'
 alias llat='ls -lAt'
+alias path='echo -e ${PATH//:/\\n}'
 alias -g G="| grep --color=auto"
 
 if [ -z "`alias ll`" ]; then
@@ -46,7 +47,6 @@ fi
 if [ -z "`alias l`" ]; then
     alias l='ls -lAh'
 fi
-
 
 set_alias_if_exists direnv da 'direnv allow'
 # alias da='direnv allow'
