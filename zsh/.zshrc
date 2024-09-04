@@ -138,6 +138,10 @@ if command -v gh &>/dev/null; then eval "$(gh completion -s zsh)"; fi
 if command -v thefuck &>/dev/null; then eval "$(thefuck --alias)"; fi
 # # eval "$(thefuck --alias)"
 
+if [ -f "$HOME/.$HOST.zsh" ]; then
+    source "$HOME/.$HOST.zsh"
+fi
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Users/iwamoto/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
