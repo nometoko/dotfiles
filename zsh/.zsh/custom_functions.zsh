@@ -23,7 +23,7 @@ if [ -n "`command -v fzf 2>&1`" ]; then
 fi
 
 # convert to pdf
-to-pdf(){
+topdf(){
   filename="$1"
   filename_pdf="${filename%.*}.pdf"
   convert $filename $filename_pdf
@@ -59,4 +59,18 @@ venv(){
     python -m venv .venv
     source ./.venv/bin/activate
   fi
+}
+
+# どこのGPUが空いているか in funalab
+nvistat() {
+  servers=("k40")
+  foreach i in $servers
+    echo "${fg_bold[green]}$i${reset_color}:"
+    ssh -x $i nvidia-smi --query-gpu=index,name,utilization.gpu,utilization.memory --format=csv,noheader \
+      | sed -e 's/NVIDIA //g' -e 's/Tesla //g' -e 's/ %/%/g' -e 's/Graphics Device/A100 80GB PCIe/g' -e "s/ 0%/ ${fg_bold[cyan]}0${reset_color}%/g" -e "s/ 100%/${fg_bold[red]} 100${reset_color}%/g" \
+      | while IFS=, read -r id gpu load mem
+        do
+          printf "%4s %16s [%4s] [%4s]\n" "$id" "$gpu" "$load" "$mem"
+        done
+  end
 }

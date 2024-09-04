@@ -48,6 +48,11 @@ if [ -z "`alias l`" ]; then
     alias l='ls -lAh'
 fi
 
+if [ -f "$HOME/.config/kitty/kitty.conf" ]; then
+    alias ek='emacs $HOME/.config/kitty/kitty.conf'
+    alias ck='code $HOME/.config/kitty/kitty.conf'
+fi
+
 set_alias_if_exists direnv da 'direnv allow'
 # alias da='direnv allow'
 set_alias_if_exists tree tree 'tree -a -I "\.DS.Store|\.git|\.venv"'
@@ -81,3 +86,8 @@ set_alias_if_exists btm btm 'btm --color default-light'
 set_alias_if_exists lazygit lz 'lazygit'
 
 [ -n "`alias run-help`" ] && unalias run-help
+
+# ssh for kitty
+if [[ "$TERM" == "xterm-kitty" ]]; then
+    alias ssh="kitten ssh"
+fi
