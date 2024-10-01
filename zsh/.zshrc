@@ -69,7 +69,7 @@ if [ -d ~/.oh-my-zsh ]; then
     # Custom plugins may be added to $ZSH_CUSTOM/plugins/
     # Example format: plugins=(rails git textmate ruby lighthouse)
     # Add wisely, as too many plugins slow down shell startup.
-    plugins=(git aliases zsh-autosuggestions zsh-syntax-highlighting you-should-use)
+    plugins=(git aliases zsh-syntax-highlighting you-should-use zsh-autocomplete zsh-autosuggestions)
 
     source $ZSH/oh-my-zsh.sh
 
@@ -105,11 +105,6 @@ autoload run-help
 colors
 compinit
 
-
-for file in ~/.zsh/*.zsh; do
-	source $file
-done
-
 # for fzf
 if [ -f /opt/local/share/fzf/shell/key-bindings.zsh ]; then
     source /opt/local/share/fzf/shell/key-bindings.zsh
@@ -123,14 +118,8 @@ WORDCHARS='*?_-.[]~=&;!#$%^(){}<'
 # 以下の拡張子を持つファイルは保管候補に出さない
 fignore=(.o .aux .log .bbl .blg .lof .dvi .fls .fdb_latexmk .synctex.gz .lot .toc .out .a\~)
 
-# cdするたびにls
-chpwd() {
-	if [[ $(pwd) != $HOME ]]; then;
-		ls -a
-	fi
-}
 
-if whence direnv &>/dev/null; then eval "$(direnv hook zsh)"; fi
+if command -v direnv &>/dev/null; then eval "$(direnv hook zsh)"; fi
 if command -v zoxide &>/dev/null; then eval "$(zoxide init zsh)"; fi
 # # eval "$(zoxide init zsh)"
 if command -v gh &>/dev/null; then eval "$(gh completion -s zsh)"; fi
@@ -138,9 +127,20 @@ if command -v gh &>/dev/null; then eval "$(gh completion -s zsh)"; fi
 if command -v thefuck &>/dev/null; then eval "$(thefuck --alias)"; fi
 # # eval "$(thefuck --alias)"
 
+for file in ~/.zsh/*.zsh; do
+	source $file
+done
+
 if [ -f "$HOME/.$HOST.zsh" ]; then
     source "$HOME/.$HOST.zsh"
 fi
+
+# cdするたびにls
+chpwd() {
+	if [[ $(pwd) != $HOME ]]; then;
+		ls -a
+	fi
+}
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -156,3 +156,4 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+

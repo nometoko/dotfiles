@@ -79,8 +79,8 @@ set_alias_if_exists bat cat 'bat'
 # alias cat='bat'
 
 # btm option
-set_alias_if_exists btm btm 'btm --color default-light'
-# alias btm='btm --color default-light'
+set_alias_if_exists btm btm 'btm --theme default-light'
+# alias btm='btm --theme default-light'
 
 # lazygit
 set_alias_if_exists lazygit lz 'lazygit'
