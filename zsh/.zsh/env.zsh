@@ -57,3 +57,7 @@ fi
 if [ -d /opt/local/lib/opencv4/pkgconfig ]; then
     export PKG_CONFIG_PATH=/opt/local/lib/opencv4/pkgconfig:$PKG_CONFIG_PATH
 fi
+
+if [ -d $HOME/pkgconfig ]; then
+    export PKG_CONFIG_PATH=$HOME/pkgconfig:$PKG_CONFIG_PATH
+fi

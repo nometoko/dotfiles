@@ -69,7 +69,7 @@ if [ -d ~/.oh-my-zsh ]; then
     # Custom plugins may be added to $ZSH_CUSTOM/plugins/
     # Example format: plugins=(rails git textmate ruby lighthouse)
     # Add wisely, as too many plugins slow down shell startup.
-    plugins=(git aliases zsh-syntax-highlighting you-should-use zsh-autocomplete zsh-autosuggestions)
+    plugins=(git aliases zsh-syntax-highlighting you-should-use zsh-autosuggestions)
 
     source $ZSH/oh-my-zsh.sh
 
@@ -156,4 +156,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
