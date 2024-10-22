@@ -137,8 +137,12 @@ fi
 
 # cdするたびにls
 chpwd() {
-	if [[ $(pwd) != $HOME ]]; then;
-		ls -a
+	if [ $(pwd) != $HOME ]; then
+        if [ $(find . -maxdepth 1 -type f | wc -l) -le 100 ]; then
+            ls -a
+        else
+            echo "too many files to show"
+        fi
 	fi
 }
 
