@@ -39,6 +39,7 @@ alias llt='ls -lt'
 alias llat='ls -lAt'
 alias path='echo -e ${PATH//:/\\n}'
 alias -g G="| grep --color=auto"
+alias o.="open ."
 
 if [ -z "`alias ll`" ]; then
     alias ll='ls -lh'
@@ -60,6 +61,8 @@ set_alias_if_exists tree tree 'tree -a -I "\.DS.Store|\.git|\.venv"'
 set_alias_if_exists code cz 'code ~/.zsh'
 # alias cz="code ~/.zshrc"
 set_alias_if_exists code c. 'code .'
+
+set_alias_if_exists nvim nz 'nvim ~/.zsh'
 
 set_alias_if_exists icdiff diff 'icdiff -H -N'
 # alias diff="icdiff -H -N"

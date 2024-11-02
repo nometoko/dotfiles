@@ -1,4 +1,3 @@
--- https://github.com/ipatch/dotfiles/blob/master/jobs/macos/Users/mr-fancy/hammerspoon/ctrlDoublePress.lua
 local timer = require("hs.timer")
 local eventtap = require("hs.eventtap")
 
@@ -6,30 +5,30 @@ local events = eventtap.event.types
 local module = {}
 local spaces = require("hs.spaces")
 
-if spaces.focusedSpace then
-	print("activeSpace is available")
-else
-	print("activeSpace is not available")
-end
-
-print(hs.hotkey)
-
 -- double tap の間隔[s]
 module.timeFrame = 1
 
+-- appのWindowを立ち上げ、最大化
 function MoveFullScreenWindow(app)
 	local activeSpace = spaces.focusedSpace()
 	local win = app:focusedWindow()
-	-- win = win:toggleFullScreen()
-	-- win = win:toggleFullScreen()
-	if win == nil then
+	if win == nil then -- applicationは立ち上がっているが、Windowがない時
 		app:activate()
-		hs.eventtap.keyStroke({ "cmd" }, "n")
+		hs.eventtap.keyStroke({ "cmd" }, "n") -- "Cmd + n"で新しいWindowを立ち上げる
 		win = app:focusedWindow()
 	end
-	spaces.moveWindowToSpace(win, activeSpace)
-	app:setFrontmost()
-	hs.eventtap.keyStroke({ "ctrl", "alt" }, "return")
+	spaces.moveWindowToSpace(win, activeSpace) -- 今見ているデスクトップにウィンドウを移動する
+	app:setFrontmost() -- 最前面にウィンドウを移動する
+	-- Windowの最大化
+	local winFrame = win:frame()
+	local screenFrame = win:screen():frame()
+	local newFrame = {
+		x = screenFrame.x,
+		y = screenFrame.y,
+		w = screenFrame.w,
+		h = screenFrame.h
+	}
+	win:setFrame(newFrame)
 end
 
 -- double tap で toggle で kitty を表示/非表示する
@@ -58,11 +57,10 @@ hs.hotkey.bind({ "ctrl" }, "m", function()
 		local win = app:focusedWindow()
 		if win == nil then
 			app:activate()
-			hs.eventtap.keyStroke({ "cmd", "shift" }, "n")
+			hs.eventtap.keyStroke({ "cmd", "shift" }, "n") -- only VSCode needs "Cmd + Shift + n" for new window
 			win = app:focusedWindow()
 		end
-		spaces.moveWindowToSpace(win, activeSpace)
-		hs.application.launchOrFocus("Visual Studio Code")
+		MoveFullScreenWindow(app)
 	end
 end)
 
