@@ -38,7 +38,7 @@ alias lat='ls -At'
 alias llt='ls -lt'
 alias llat='ls -lAt'
 alias path='echo -e ${PATH//:/\\n}'
-alias -g G="| grep --color=auto"
+alias -g G="| grep -i --color=auto"
 alias o.="open ."
 
 if [ -z "`alias ll`" ]; then

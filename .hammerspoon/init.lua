@@ -25,7 +25,7 @@ function MoveFullScreenWindow(app)
 		x = screenFrame.x,
 		y = screenFrame.y,
 		w = screenFrame.w,
-		h = screenFrame.h
+		h = screenFrame.h,
 	}
 	win:setFrame(newFrame) -- ウィンドウのフレームを最大化する
 end
@@ -58,10 +58,10 @@ hs.hotkey.bind({ "ctrl" }, "m", function()
 		-- Windowがなかったら、"Cmd + Shift + n"で新しいWindowを立ち上げる　（VSCodeだけショートカットが異なるので先にウィンドウを立ち上げておく）
 		if win == nil then
 			app:activate()
-			hs.eventtap.keyStroke({ "cmd", "shift" }, "n") 
+			hs.eventtap.keyStroke({ "cmd", "shift" }, "n")
 			win = app:focusedWindow()
 		end
-		MoveFullScreenWindow(app) -- 
+		MoveFullScreenWindow(app) --
 	end
 end)
 
@@ -81,7 +81,20 @@ end)
 
 -- Ctrl + . で Google Chrome を表示/非表示する
 hs.hotkey.bind({ "ctrl" }, ".", function()
-	local appName = "Google Chrome"
+	local appName = "Brave"
+	local activeSpace = spaces.focusedSpace()
+	local app = hs.application.find(appName)
+	if app == nil then -- アプリケーションが立ち上がっていない場合、立ち上げる
+		hs.application.launchOrFocus("Brave Browser")
+	elseif app:isFrontmost() then -- アプリケーションが最前面に表示されている場合、非表示にする
+		app:hide()
+	else -- アプリケーションが最前面に表示されていない場合、最大化して表示する
+		MoveFullScreenWindow(app)
+	end
+end)
+
+hs.hotkey.bind({ "ctrl" }, "/", function()
+	local appName = "Notion"
 	local activeSpace = spaces.focusedSpace()
 	local app = hs.application.find(appName)
 	if app == nil then -- アプリケーションが立ち上がっていない場合、立ち上げる
@@ -89,6 +102,13 @@ hs.hotkey.bind({ "ctrl" }, ".", function()
 	elseif app:isFrontmost() then -- アプリケーションが最前面に表示されている場合、非表示にする
 		app:hide()
 	else -- アプリケーションが最前面に表示されていない場合、最大化して表示する
+		local win = app:focusedWindow()
+		-- Windowがなかったら、"Cmd + Shift + n"で新しいWindowを立ち上げる　（VSCodeだけショートカットが異なるので先にウィンドウを立ち上げておく）
+		if win == nil then
+			app:activate()
+			hs.eventtap.keyStroke({ "cmd", "shift" }, "n")
+			win = app:focusedWindow()
+		end
 		MoveFullScreenWindow(app)
 	end
 end)
