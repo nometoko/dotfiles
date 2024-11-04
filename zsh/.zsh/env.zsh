@@ -37,7 +37,9 @@ if [ -d $HOME/Library/Mobile\ Documents ]; then
 fi
 
 # for X11
-export DISPLAY=:0
+if [ -z $DISPLAY ]; then
+    export DISPLAY=:0
+fi
 
 # preamble file path for LaTeX
 if [ -d $HOME/tex ]; then
