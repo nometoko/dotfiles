@@ -63,7 +63,7 @@ venv(){
 
 # どこのGPUが空いているか in funalab
 nvistat() {
-  servers=("k40")
+  servers=("v106" "v107")
   foreach i in $servers
     echo "${fg_bold[green]}$i${reset_color}:"
     ssh -x $i nvidia-smi --query-gpu=index,name,utilization.gpu,utilization.memory --format=csv,noheader \
