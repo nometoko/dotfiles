@@ -118,7 +118,6 @@ WORDCHARS='*?_-.[]~=&;!#$%^(){}<'
 # 以下の拡張子を持つファイルは保管候補に出さない
 fignore=(.o .aux .log .bbl .blg .lof .dvi .fls .fdb_latexmk .synctex.gz .lot .toc .out .a\~)
 
-
 if command -v direnv &>/dev/null; then eval "$(direnv hook zsh)"; fi
 if command -v zoxide &>/dev/null; then eval "$(zoxide init zsh)"; fi
 # # eval "$(zoxide init zsh)"
