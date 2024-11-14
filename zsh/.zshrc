@@ -136,7 +136,7 @@ fi
 
 # cdするたびにls
 chpwd() {
-	if [ $(pwd) != $HOME ]; then
+	if [ "$(pwd)" != $HOME ]; then
         if [ $(find . -maxdepth 1 -type f | wc -l) -le 100 ]; then
             ls -a
         else

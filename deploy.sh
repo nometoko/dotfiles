@@ -24,5 +24,4 @@ do
     else
         ln -s $PWD/zsh/$files $HOME/$files
     fi
-    ln -s $PWD/zsh/$files $HOME/$files
 done
