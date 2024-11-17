@@ -40,6 +40,7 @@ alias llat='ls -lAt'
 alias path='echo -e ${PATH//:/\\n}'
 alias -g G="| grep -i --color=auto"
 alias o.="open ."
+alias remake="make clean && make"
 
 if [ -z "`alias ll`" ]; then
     alias ll='ls -lh'
