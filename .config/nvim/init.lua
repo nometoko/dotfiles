@@ -3,3 +3,5 @@ require("config.lazy")
 require("config.style")
 
 vim.api.nvim_set_keymap("i", "<Tab>", 'pumvisible() ? "<C-y>" : "<Tab>"', { expr = true, noremap = true })
+vim.opt.textwidth = 0
+vim.opt.wrapmargin = 0
