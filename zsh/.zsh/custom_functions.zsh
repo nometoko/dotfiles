@@ -52,13 +52,19 @@ replace-space(){
   done
 }
 
-venv(){
-  if [ -e "./.venv/bin/activate" ]; then
-    source ./.venv/bin/activate
-  else
-    python -m venv .venv
-    source ./.venv/bin/activate
-  fi
+venv () {
+    local version="$1"
+    if [ -z "$version" ]; then
+        echo "Usage: venv <version>"
+        return 1
+    fi
+
+    local activate="$HOME/venvs/${version}utils/bin/activate"
+    if [ -e "$activate" ]; then
+        source "$activate"
+    else
+        echo "No venv for version ${version}"
+    fi
 }
 
 # どこのGPUが空いているか in funalab
