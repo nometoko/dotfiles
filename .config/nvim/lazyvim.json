@@ -1,7 +1,4 @@
 {
-  "extras": [
-    "lazyvim.plugins.extras.util.octo"
-  ],
   "news": {
     "NEWS.md": "7107"
   },
