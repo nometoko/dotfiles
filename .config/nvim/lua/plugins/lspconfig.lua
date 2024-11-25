@@ -39,6 +39,17 @@ return {
           clangdFileStatus = true,
         },
       },
+      pyright = {
+        settings = {
+          python = {
+            pythonPath = "/opt/local/bin/python",
+            analysis = {
+              autoSearchPaths = true,
+              useLibraryCodeForTypes = true,
+            },
+          },
+        },
+      },
     },
     setup = {
       clangd = function(_, opts)

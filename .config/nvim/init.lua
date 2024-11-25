@@ -5,3 +5,5 @@ require("config.style")
 vim.api.nvim_set_keymap("i", "<Tab>", 'pumvisible() ? "<C-y>" : "<Tab>"', { expr = true, noremap = true })
 vim.opt.textwidth = 0
 vim.opt.wrapmargin = 0
+
+vim.g.python3_host_prog = "/opt/local/bin/python"
