@@ -5,4 +5,5 @@ setopt CHASE_LINKS            # when you move to symbolic link, you will be move
 setopt ignoreeof
 setopt correct
 setopt PROMPT_SUBST           # for Direnv
+setopt autoresume
 unsetopt beep
