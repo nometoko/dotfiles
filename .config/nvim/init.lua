@@ -6,4 +6,8 @@ vim.api.nvim_set_keymap("i", "<Tab>", 'pumvisible() ? "<C-y>" : "<Tab>"', { expr
 vim.opt.textwidth = 0
 vim.opt.wrapmargin = 0
 
+vim.opt.formatoptions:remove("t")
+vim.opt.formatoptions:remove("c")
+vim.opt.formatoptions:remove("r")
+
 vim.g.python3_host_prog = "/opt/local/bin/python"
