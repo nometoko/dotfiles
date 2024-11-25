@@ -65,6 +65,8 @@ set_alias_if_exists code c. 'code .'
 
 set_alias_if_exists nvim nz 'nvim ~/.zsh'
 
+set_alias_if_exists nvim n. 'nvim .'
+
 set_alias_if_exists icdiff diff 'icdiff -H -N'
 # alias diff="icdiff -H -N"
 set_alias_if_exists fzf fz 'fzf-noempty --bind "tab:toggle,shift-tab:toggle+beginning-of-line+kill-line,ctrl-j:toggle+beginning-of-line+kill-line,ctrl-t:top" --color=light -1 -m'
