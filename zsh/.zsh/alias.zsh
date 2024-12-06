@@ -57,7 +57,7 @@ fi
 
 set_alias_if_exists direnv da 'direnv allow'
 # alias da='direnv allow'
-set_alias_if_exists tree tree 'tree -a -I "\.DS.Store|\.git|\.venv"'
+set_alias_if_exists tree tree 'tree -a -I "\.DS_Store|\.git|\.venv"'
 # alias tree='tree -a -I "\.DS.Store|\.git|\.venv"'
 set_alias_if_exists code cz 'code ~/.zsh'
 # alias cz="code ~/.zshrc"
