@@ -63,3 +63,7 @@ fi
 if [ -d $HOME/pkgconfig ]; then
     export PKG_CONFIG_PATH=$HOME/pkgconfig:$PKG_CONFIG_PATH
 fi
+
+if [ `uname` = "Darwin" ]; then
+    export DYLD_LIBRARY_PATH=/opt/local/lib:$DYLD_LIBRARY_PATH
+fi
