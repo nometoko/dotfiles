@@ -31,7 +31,6 @@ topdf(){
 }
 
 del(){
-  delFilename=$1
   mv $1 ~/.Trash/
 }
 
