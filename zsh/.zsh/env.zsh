@@ -65,5 +65,6 @@ if [ -d $HOME/pkgconfig ]; then
 fi
 
 if [ `uname` = "Darwin" ]; then
-    export DYLD_LIBRARY_PATH=/opt/local/lib:$DYLD_LIBRARY_PATH
+    export CPATH=/opt/local/include:$CPATH
+    export DYLD_FALLBACK_LIBRARY_PATH=/opt/local/lib:$DYLD_FALLBACK_LIBRARY_PATH
 fi
