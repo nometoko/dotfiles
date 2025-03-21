@@ -81,8 +81,8 @@ set_alias_if_exists tldr tldr 'tldr --pager'
 # alias tldr='tldr --pager'
 
 # 進化版cat
-set_alias_if_exists bat cat 'bat'
-set_alias_if_exists bat less 'bat'
+set_alias_if_exists bat cat 'bat --plain'
+set_alias_if_exists bat less 'bat --plain'
 # alias cat='bat'
 
 # btm option
