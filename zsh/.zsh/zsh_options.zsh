@@ -6,4 +6,6 @@ setopt ignoreeof
 setopt correct
 setopt PROMPT_SUBST           # for Direnv
 setopt autoresume
+setopt noclobber
+setopt pushd_ignore_dups
 unsetopt beep

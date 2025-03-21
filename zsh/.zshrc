@@ -113,10 +113,6 @@ if [ -f /opt/local/share/fzf/shell/completion.zsh ]; then
     source /opt/local/share/fzf/shell/completion.zsh
 fi
 
-WORDCHARS='*?_-.[]~=&;!#$%^(){}<'
-
-# 以下の拡張子を持つファイルは保管候補に出さない
-fignore=(.o .aux .log .bbl .blg .lof .dvi .fls .fdb_latexmk .synctex.gz .lot .toc .out .a\~)
 
 if command -v direnv &>/dev/null; then eval "$(direnv hook zsh)"; fi
 if command -v zoxide &>/dev/null; then eval "$(zoxide init zsh)"; fi
@@ -145,6 +141,17 @@ chpwd() {
 	fi
 }
 
+preexec() {
+    tmp=RANDOM
+    if (( tmp % 100 == 0 )); then
+        echo "三藤だけはまじで、、、"
+    else
+        if (( tmp % 5 == 0)); then
+            echo "今田翔から逃れることはできない、、、"
+        fi
+    fi
+}
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Users/iwamoto/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -161,7 +168,8 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/iwamoto/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/iwamoto/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/iwamoto/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/iwamoto/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/iwamoto/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/iwamoto/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/Users/iwamoto/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/iwamoto/google-cloud-sdk/completion.zsh.inc'; fi
+
