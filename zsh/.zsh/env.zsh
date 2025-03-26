@@ -20,7 +20,7 @@ if [ -d /Applications/LibreOffice.app/Contents/MacOS ]; then
 fi
 
 if [ -d $HOME/bin ]; then
-    export PATH=$PATH:/$HOME/bin
+    export PATH=$PATH:$HOME/bin
 fi
 
 # for bat command
