@@ -79,3 +79,103 @@ nvistat() {
         done
   end
 }
+
+shrinkpdf () {
+	if [ $# -lt 1 ]
+	then
+		echo "Usage: $0 file.pdf"
+		echo "  will shrink file.pdf"
+		return
+	fi
+	out=${1:r}-s.pdf
+	gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 -dPDFSETTINGS=/printer -sOutputFile=${out} $1
+}
+
+backup-nvim() {
+  local timestamp=$(date "+%Y-%m-%d-%H%M")
+  echo "Backup following directories"
+  echo "  ~/.config/nvim      => ~/.config/nvim.${timestamp}"
+  echo "  ~/.local/share/nvim => ~/.local/share/nvim.${timestamp}"
+  echo "  ~/.local/state/nvim => ~/.local/state/nvim.${timestamp}"
+  echo "  ~/.cache/nvim       => ~/.cache/nvim.${timestamp}"
+
+  # required
+  mv ~/.config/nvim ~/.config/nvim.${timestamp}
+
+  # optional but recommended
+  mv ~/.local/share/nvim ~/.local/share/nvim.${timestamp}
+  mv ~/.local/state/nvim ~/.local/state/nvim.${timestamp}
+  mv ~/.cache/nvim ~/.cache/nvim.${timestamp}
+}
+
+# Restore your backed up nvim config. Use the backup-nvim.zsh script to create the backup.
+restore-nvim() {
+  local backup_array=(${(f)"$(command ls -1d ~/.config/nvim.* | sort -nr | sed -e 's/.*nvim/nvim/')"})
+
+  if [ $#backup_array = 0 ]; then
+    echo "No backup directory found"
+    return 1
+  fi
+  for ((i = 1; i <= $#backup_array; i++)) print -r -- "[$i] $backup_array[i]"
+
+  # select backup directory
+  echo ""
+  echo -n "Select index: "
+  re='^[0-9]+$'
+  read index
+  if ! [[ $index =~ $re ]] ; then
+    echo "Error: Not a number"
+    return 1
+  fi
+  if [ $index -gt $#backup_array ]; then
+    echo "index must be less than $#backup_array"
+    return 1
+  fi
+  if [ $index -lt 1 ]; then
+    echo "index must be greater than 1"
+    return 1
+  fi
+  local selected=$backup_array[$index]
+  echo "Selected: $selected"
+  local backup_config="$HOME/.config/$selected"
+  local backup_share="$HOME/.local/share/$selected"
+  local backup_state="$HOME/.local/state/$selected"
+  local backup_cache="$HOME/.cache/$selected"
+
+  if [ ! -d $backup_config -o ! -d $backup_share -o ! -d $backup_state -o ! -d $backup_cache ]; then
+    echo "backup directory not found"
+    return 1
+  fi
+
+  echo ""
+  echo "Restore following directories"
+  echo ""
+  echo "  $backup_config      => ~/.config/nvim"
+  echo "  $backup_share => ~/.local/share/nvim"
+  echo "  $backup_state => ~/.local/state/nvim"
+  echo "  $backup_cache       => ~/.cache/nvim"
+  echo ""
+  echo "This operation will overwrite the above directories."
+  echo -n "Proceed? [y/N] "
+
+  read yesno
+  # execute
+  if [ $yesno = "y" -o $yesno = "Y" ]; then
+    if [ -d ~/.config//nvim ]; then
+      rm -rf ~/.config/nvim
+    fi
+    if [ -d ~/.local/share/nvim ]; then
+      rm -rf ~/.local/share/nvim
+    fi
+    if [ -d ~/.local/state/nvim ]; then
+      rm -rf ~/.local/state/nvim
+    fi
+    if [ -d ~/.cache//nvim ]; then
+      rm -rf ~/.cache/nvim
+    fi
+    mv $backup_config ~/.config/nvim
+    mv $backup_share  ~/.local/share/nvim
+    mv $backup_state  ~/.local/state/nvim
+    mv $backup_cache  ~/.cache/nvim
+  fi
+}
