@@ -5,4 +5,5 @@
 vim.cmd([[
   cnoreabbrev Wq wq
   cnoreabbrev WQ wq
+  cnoreabbrev Q q
 ]])
