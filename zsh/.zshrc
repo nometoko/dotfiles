@@ -133,25 +133,3 @@ fi
 if [[ "${OSTYPE}" == darwin* ]]; then
     source "$HOME/.local.zsh"
 fi
-
-# cdするたびにls
-chpwd() {
-	if [ "$(pwd)" != $HOME ]; then
-        if [ $(find . -maxdepth 1 -type f | wc -l) -le 100 ]; then
-            ls -a
-        else
-            echo "too many files to show"
-        fi
-	fi
-}
-
-preexec() {
-    tmp=RANDOM
-    if (( tmp % 100 == 0 )); then
-        echo "三藤だけはまじで、、、"
-    else
-        if (( tmp % 5 == 0)); then
-            echo "今田翔から逃れることはできない、、、"
-        fi
-    fi
-}
