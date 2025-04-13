@@ -55,6 +55,7 @@ if [ -f "$HOME/.config/kitty/kitty.conf" ]; then
     alias ck='code $HOME/.config/kitty/kitty.conf'
 fi
 
+set_alias_if_exists lsd ls 'lsd -a'
 set_alias_if_exists direnv da 'direnv allow'
 # alias da='direnv allow'
 set_alias_if_exists tree tree 'tree -a -I "\.DS_Store|\.git|\.venv"'

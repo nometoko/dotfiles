@@ -130,46 +130,6 @@ if [ -f "$HOME/.$HOST.zsh" ]; then
     source "$HOME/.$HOST.zsh"
 fi
 
-# cdするたびにls
-chpwd() {
-	if [ "$(pwd)" != $HOME ]; then
-        if [ $(find . -maxdepth 1 -type f | wc -l) -le 100 ]; then
-            ls -a
-        else
-            echo "too many files to show"
-        fi
-	fi
-}
-
-preexec() {
-    tmp=RANDOM
-    if (( tmp % 100 == 0 )); then
-        echo "三藤だけはまじで、、、"
-    else
-        if (( tmp % 5 == 0)); then
-            echo "今田翔から逃れることはできない、、、"
-        fi
-    fi
-}
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/iwamoto/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/iwamoto/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/iwamoto/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/iwamoto/miniconda3/bin:$PATH"
-    fi
+if [[ "${OSTYPE}" == darwin* ]]; then
+    source "$HOME/.local.zsh"
 fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/iwamoto/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/iwamoto/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/iwamoto/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/iwamoto/google-cloud-sdk/completion.zsh.inc'; fi
-
