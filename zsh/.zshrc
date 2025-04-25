@@ -1,3 +1,5 @@
+source ~/.install.zsh
+
 autoload -U colors compinit
 autoload run-help
 colors
