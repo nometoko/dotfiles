@@ -31,13 +31,18 @@ unset jupyterPath
 
 alias c="clear"
 alias e="exit"
-alias ls="/bin/ls -G -F --color=auto"
+
+if command -v lsd &>/dev/null; then
+    alias ls='lsd'
+else
+    alias ls='/bin/ls -G -F'
+fi
+
 alias la='ls -A'
 alias lt='ls -t'
 alias lat='ls -At'
 alias llt='ls -lt'
 alias llat='ls -lAt'
-alias path='echo -e ${PATH//:/\\n}'
 alias -g G="| grep -i --color=auto"
 alias o.="open ."
 alias remake="make clean && make"
@@ -55,7 +60,6 @@ if [ -f "$HOME/.config/kitty/kitty.conf" ]; then
     alias ck='code $HOME/.config/kitty/kitty.conf'
 fi
 
-set_alias_if_exists lsd ls 'lsd -a'
 set_alias_if_exists direnv da 'direnv allow'
 # alias da='direnv allow'
 set_alias_if_exists tree tree 'tree -a -I "\.DS_Store|\.git|\.venv"'
