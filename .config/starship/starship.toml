@@ -5,6 +5,9 @@ add_newline = false
 truncation_length = 100
 format = "[\\[$path\\]]($style) "
 
+[python]
+version_format = 'v${major}.${minor}'
+
 [gcloud]
 disabled = true
 
