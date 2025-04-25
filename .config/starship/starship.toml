@@ -1,6 +1,10 @@
 # Inserts a blank line between shell prompts
 add_newline = false
 
+[directory]
+truncation_length = 100
+format = "[\\[$path\\]]($style) "
+
 [gcloud]
 disabled = true
 
