@@ -201,3 +201,7 @@ preexec() {
         fi
     fi
 }
+
+d() {
+    dirs -v | head -10
+}
