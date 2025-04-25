@@ -80,3 +80,7 @@ fi
 if [ -d $HOME/.config/starship ]; then
     export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
 fi
+
+if [ -d $HOME/.cargo/bin ]; then
+    export PATH=$PATH:$HOME/.cargo/bin
+fi

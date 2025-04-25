@@ -35,3 +35,7 @@ fi
 if command -v starship &>/dev/null; then
     eval "$(starship init zsh)"
 fi
+
+if command -v sheldon &>/dev/null; then
+    eval "$(sheldon source)"
+fi
