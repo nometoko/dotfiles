@@ -1,0 +1,10 @@
+# Inserts a blank line between shell prompts
+add_newline = false
+
+[gcloud]
+disabled = true
+
+[hostname]
+ssh_only = false
+format = "[$hostname]($style) "
+

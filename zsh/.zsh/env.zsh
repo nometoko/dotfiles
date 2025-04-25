@@ -77,3 +77,6 @@ if [ `uname` = "Darwin" ]; then
     export DYLD_FALLBACK_LIBRARY_PATH=/opt/local/lib:$DYLD_FALLBACK_LIBRARY_PATH
 fi
 
+if [ -d $HOME/.config/starship ]; then
+    export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
+fi
