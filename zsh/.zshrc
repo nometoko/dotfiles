@@ -22,7 +22,7 @@ if command -v gh &>/dev/null; then eval "$(gh completion -s zsh)"; fi
 if command -v thefuck &>/dev/null; then eval "$(thefuck --alias)"; fi
 # # eval "$(thefuck --alias)"
 
-source ~/.install.zsh
+source ~/.path.zsh
 
 for file in ~/.zsh/*.zsh; do
 	source $file
