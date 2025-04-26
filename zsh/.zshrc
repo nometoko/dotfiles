@@ -5,6 +5,8 @@ autoload run-help
 colors
 compinit
 
+eval `dircolors`
+
 # for fzf
 if [ -f /opt/local/share/fzf/shell/key-bindings.zsh ]; then
     source /opt/local/share/fzf/shell/key-bindings.zsh

@@ -35,7 +35,7 @@ alias e="exit"
 if command -v lsd &>/dev/null; then
     alias ls='lsd'
 else
-    alias ls='/bin/ls -G -F'
+    alias ls='/bin/ls -G -F --color=auto'
 fi
 
 alias la='ls -A'
