@@ -22,6 +22,8 @@ if command -v gh &>/dev/null; then eval "$(gh completion -s zsh)"; fi
 if command -v thefuck &>/dev/null; then eval "$(thefuck --alias)"; fi
 # # eval "$(thefuck --alias)"
 
+source ~/.install.zsh
+
 for file in ~/.zsh/*.zsh; do
 	source $file
 done
@@ -33,8 +35,6 @@ fi
 if [[ "${OSTYPE}" == darwin* ]]; then
     source "$HOME/.local.zsh"
 fi
-
-source ~/.install.zsh
 
 if command -v starship &>/dev/null; then
     eval "$(starship init zsh)"
