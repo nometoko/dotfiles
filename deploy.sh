@@ -1,6 +1,6 @@
 #!/bin/sh
 
-for file in $(ls -A | grep -vE '\.git$|\.gitignore$|deploy.sh$|zsh$|README.md$|\.DS\_Store$|\.config$'); do
+for file in $(ls -A | grep -vE '\.git$|\.gitignore$|*.sh$|zsh$|README.md$|\.DS\_Store$|\.config$'); do
     target=${HOME}/${file}
     if [ -f $target ] || [ -d $target ]; then
         if [ -L $target ]; then
