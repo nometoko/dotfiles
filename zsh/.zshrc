@@ -1,5 +1,3 @@
-source ~/.install.zsh
-
 autoload -U colors compinit
 autoload run-help
 colors
@@ -35,6 +33,8 @@ fi
 if [[ "${OSTYPE}" == darwin* ]]; then
     source "$HOME/.local.zsh"
 fi
+
+source ~/.install.zsh
 
 if command -v starship &>/dev/null; then
     eval "$(starship init zsh)"

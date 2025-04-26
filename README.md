@@ -1,9 +1,5 @@
 # myDotfiles
 
-## Requirements
-
-oh-my-zsh has to be installed.
-
 ## Recommended Commands
 
 ### Installation via MacPorts
