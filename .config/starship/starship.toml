@@ -15,3 +15,5 @@ disabled = true
 ssh_only = false
 format = "[$hostname]($style) "
 
+[c]
+format = "[$symbol]($style) "
