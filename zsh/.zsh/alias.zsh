@@ -67,7 +67,7 @@ set_alias_if_exists fd fd 'fd -E "CloudStorage"'
 set_alias_if_exists tldr tldr 'tldr --pager'
 
 # 進化版cat
-set_alias_if_exists bat cat 'bat --plain'
+set_alias_if_exists batcat bat 'batcat'
 set_alias_if_exists bat less 'bat --plain'
 
 # btm option

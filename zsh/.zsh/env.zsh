@@ -27,6 +27,7 @@ if [ -n "`command -v bat 2>&1`" ]; then
     elif [[ "$TERM" == "xterm-kitty" ]]; then
         export BAT_THEME='MyTheme'
     fi
+    export BAT_PAGER='less -R'
 fi
 
 # for fzf command
