@@ -11,3 +11,15 @@ vim.opt.formatoptions:remove("c")
 vim.opt.formatoptions:remove("r")
 
 vim.g.python3_host_prog = "/opt/local/bin/python"
+
+vim.g.clipboard = {
+  name = "OSC 52",
+  copy = {
+    ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+    ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+  },
+  paste = {
+    ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+    ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+  },
+}
