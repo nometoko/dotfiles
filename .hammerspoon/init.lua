@@ -44,27 +44,27 @@ module.action = function()
 	end
 end
 
--- Ctrl + m で VSCode を表示/非表示する
-hs.hotkey.bind({ "ctrl" }, "m", function()
-	local appName = "Code"
-	local activeSpace = spaces.focusedSpace()
-	local app = hs.application.find(appName)
-	if app == nil then -- アプリケーションが立ち上がっていない場合、立ち上げる
-		hs.application.launchOrFocus("Visual Studio Code")
-	elseif app:isFrontmost() and app:focusedWindow() ~= nil then -- アプリケーションが最前面に表示されている場合、非表示にする
-		app:hide()
-	else -- アプリケーションが最前面に表示されていない場合、最大化して表示する
-		local win = app:focusedWindow()
-		-- Windowがなかったら、"Cmd + Shift + n"で新しいWindowを立ち上げる　（VSCodeだけショートカットが異なるので先にウィンドウを立ち上げておく）
-		if win == nil then
-			app:activate()
-			hs.eventtap.keyStroke({ "cmd", "shift" }, "n")
-			win = app:focusedWindow()
-		end
-		MoveFullScreenWindow(app) --
-	end
-end)
-
+-- -- Ctrl + m で VSCode を表示/非表示する
+-- hs.hotkey.bind({ "ctrl" }, "m", function()
+-- 	local appName = "Code"
+-- 	local activeSpace = spaces.focusedSpace()
+-- 	local app = hs.application.find(appName)
+-- 	if app == nil then -- アプリケーションが立ち上がっていない場合、立ち上げる
+-- 		hs.application.launchOrFocus("Visual Studio Code")
+-- 	elseif app:isFrontmost() and app:focusedWindow() ~= nil then -- アプリケーションが最前面に表示されている場合、非表示にする
+-- 		app:hide()
+-- 	else -- アプリケーションが最前面に表示されていない場合、最大化して表示する
+-- 		local win = app:focusedWindow()
+-- 		-- Windowがなかったら、"Cmd + Shift + n"で新しいWindowを立ち上げる　（VSCodeだけショートカットが異なるので先にウィンドウを立ち上げておく）
+-- 		if win == nil then
+-- 			app:activate()
+-- 			hs.eventtap.keyStroke({ "cmd", "shift" }, "n")
+-- 			win = app:focusedWindow()
+-- 		end
+-- 		MoveFullScreenWindow(app) --
+-- 	end
+-- end)
+--
 -- Ctrl + , で Slack を表示/非表示する
 hs.hotkey.bind({ "ctrl" }, ",", function()
 	local appName = "Slack"
