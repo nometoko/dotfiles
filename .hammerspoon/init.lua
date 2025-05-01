@@ -11,7 +11,7 @@ module.timeFrame = 1
 function MoveFullScreenWindow(app)
 	local activeSpace = spaces.focusedSpace()
 	local win = app:focusedWindow()
-	if win == nil then -- applicationは立ち上がっているが、Windowがない時
+	while win == nil do
 		app:activate()
 		hs.eventtap.keyStroke({ "cmd" }, "n") -- "Cmd + n"で新しいWindowを立ち上げる
 		win = app:focusedWindow()
