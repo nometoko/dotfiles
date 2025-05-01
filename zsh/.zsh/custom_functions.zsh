@@ -27,18 +27,27 @@ del(){
 }
 
 venv () {
-    local version="$1"
-    if [ -z "$version" ]; then
-        echo "Usage: venv <version>"
+    local venv_array=($HOME/venvs/*(/onN:t))
+    if [ $#venv_array = 0 ]; then
+        echo "No backup directory found"
         return 1
     fi
+    for ((i = 1; i <= $#venv_array; i++)) print -r -- "[$i] $venv_array[$i]"
 
-    local activate="$HOME/venvs/${version}utils/bin/activate"
-    if [ -e "$activate" ]; then
-        source "$activate"
+    read "index?Select index: "
+
+    if [[ "$index" =~ '^[0-9]+$' ]]; then
+        if [ $index -gt $#venv_array ]; then
+            echo "Invalid index"
+            return 1
+        fi
+        venv_name=${venv_array[$index]}
+        echo "Activate $venv_name"
+        source $HOME/venvs/$venv_name/bin/activate
     else
-        echo "No venv for version ${version}"
+        echo "Invalid index"
     fi
+    return 0
 }
 
 # どこのGPUが空いているか in funalab
