@@ -32,12 +32,15 @@ venv () {
         echo "No backup directory found"
         return 1
     fi
+    echo '[0] quit'
     for ((i = 1; i <= $#venv_array; i++)) print -r -- "[$i] $venv_array[$i]"
 
     read "index?Select index: "
 
     if [[ "$index" =~ '^[0-9]+$' ]]; then
-        if [ $index -gt $#venv_array ]; then
+        if [ $index = '0' ]; then
+            return 0
+        elif [ $index -gt $#venv_array ]; then
             echo "Invalid index"
             return 1
         fi
