@@ -11,23 +11,25 @@ module.timeFrame = 1
 function MoveFullScreenWindow(app)
 	local activeSpace = spaces.focusedSpace()
 	local win = app:focusedWindow()
-	while win == nil do
+	if win == nil then -- Windowがなかったら、"Cmd + n"で新しいWindowを立ち上げる
 		app:activate()
 		hs.eventtap.keyStroke({ "cmd" }, "n") -- "Cmd + n"で新しいWindowを立ち上げる
 		win = app:focusedWindow()
 	end
-	spaces.moveWindowToSpace(win, activeSpace) -- 今見ているディスプレイ(デスクトップ)にウィンドウを移動する
-	app:setFrontmost() -- 最前面にウィンドウを移動する
-	-- Windowの最大化
-	local winFrame = win:frame()
-	local screenFrame = hs.screen.mainScreen():frame() -- メインディスプレイのフレームを取得
-	local newFrame = {
-		x = screenFrame.x,
-		y = screenFrame.y,
-		w = screenFrame.w,
-		h = screenFrame.h,
-	}
-	win:setFrame(newFrame) -- ウィンドウのフレームを最大化する
+
+	if win ~= nil then
+		spaces.moveWindowToSpace(win, activeSpace) -- 今見ているディスプレイ(デスクトップ)にウィンドウを移動する
+		app:setFrontmost() -- 最前面にウィンドウを移動する
+		-- Windowの最大化
+		local screenFrame = hs.screen.mainScreen():frame() -- メインディスプレイのフレームを取得
+		local newFrame = {
+			x = screenFrame.x,
+			y = screenFrame.y,
+			w = screenFrame.w,
+			h = screenFrame.h,
+		}
+		win:setFrame(newFrame) -- ウィンドウのフレームを最大化する
+	end
 end
 
 -- double tap で toggle で kitty を表示/非表示する
