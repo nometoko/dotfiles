@@ -82,4 +82,8 @@ set_alias_if_exists lazygit lz 'lazygit'
 # ssh for kitty
 if [[ "$TERM" == "xterm-kitty" ]]; then
     alias ssh="kitten ssh"
+    alias pbcopy="kitten clipboard"
 fi
+
+alias copy="pbcopy"
+alias paste="pbpaste"
