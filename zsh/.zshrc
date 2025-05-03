@@ -22,6 +22,18 @@ if command -v gh &>/dev/null; then eval "$(gh completion -s zsh)"; fi
 if command -v thefuck &>/dev/null; then eval "$(thefuck --alias)"; fi
 # # eval "$(thefuck --alias)"
 
+alias bs='builin source'
+# source function with zcompile (precompile)
+source() {
+    local input="$1"
+    local cache="$input.zwc"
+    # もしCacheがないか、古いキャッシュなら再度コンパイル
+    if [[ ! -f "$cache" || "$input" -nt "$cache" ]]; then
+        zcompile "$input"
+    fi
+    \builtin source "$@"
+}
+
 source ~/.path.zsh
 
 for file in ~/.zsh/*.zsh; do
