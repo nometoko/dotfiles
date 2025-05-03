@@ -7,10 +7,10 @@ eval `dircolors`
 
 # for fzf
 if [ -f /opt/local/share/fzf/shell/key-bindings.zsh ]; then
-    source /opt/local/share/fzf/shell/key-bindings.zsh
+    builtin source /opt/local/share/fzf/shell/key-bindings.zsh
 fi
 if [ -f /opt/local/share/fzf/shell/completion.zsh ]; then
-    source /opt/local/share/fzf/shell/completion.zsh
+    builtin source /opt/local/share/fzf/shell/completion.zsh
 fi
 
 
@@ -36,7 +36,7 @@ source() {
 
 source ~/.path.zsh
 
-for file in ~/.zsh/*.zsh; do
+for file in ~/.config/zsh/*.zsh; do
 	source $file
 done
 
