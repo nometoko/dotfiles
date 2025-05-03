@@ -1,5 +1,6 @@
 # Inserts a blank line between shell prompts
 add_newline = false
+right_format = """$time"""
 
 [directory]
 truncation_length = 100
@@ -19,3 +20,6 @@ format = "[$hostname]($style) "
 
 [c]
 format = "[$symbol]($style) "
+
+[time]
+disabled = false
