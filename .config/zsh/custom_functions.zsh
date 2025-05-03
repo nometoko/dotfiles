@@ -100,9 +100,8 @@ preexec() {
 }
 
 cat() {
-    BAT_PAGET_TMP=$BAT_PAGER
+    local BAT_PAGER_TMP=$BAT_PAGER
     export BAT_PAGER=""
     bat --plain $1
     export BAT_PAGER=$BAT_PAGET_TMP
-    unset BAT_PAGET_TMP
 }
