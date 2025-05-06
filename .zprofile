@@ -1,10 +1,14 @@
+_macos_path=( \
+    /opt/local/bin/ \
+    /opt/local/sbin/ \
+    /opt/local/libexec/gnubin \
+    /Library/Frameworks/Python.framework/Versions/3.12/bin/ \
+    /Applications/LibreOffice.app/Contents/MacOS/ \
+)
 
-# MacPorts Installer addition on 2024-03-01_at_15:07:38: adding an appropriate PATH variable for use with MacPorts.
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
-# Finished adapting your PATH environment variable for use with MacPorts.
+if [[ "$OSTYPE" == darwin* ]]; then
+    path=( $path $_macos_path )
+fi
 
-
-# Setting PATH for Python 3.12
-# The original version is saved in .zprofile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.12/bin:${PATH}"
+unset _macos_path
 export PATH

@@ -11,11 +11,6 @@ if [ -d /usr/libexec/java_home ]; then
     export JAVA_HOME=`/usr/libexec/java_home`
 fi
 
-# for lf command
-if [ -d /Applications/LibreOffice.app/Contents/MacOS ]; then
-    export PATH=$PATH:/Applications/LibreOffice.app/Contents/MacOS
-fi
-
 if [ -d $HOME/bin ]; then
     export PATH=$PATH:$HOME/bin
 fi
