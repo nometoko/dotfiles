@@ -1,3 +1,9 @@
+_global_path=( \
+    $HOME/bin \
+    $HOME/bin/go/bin
+    $HOME/.cargo/bin \
+)
+
 _macos_path=( \
     /opt/local/bin \
     /opt/local/sbin \
@@ -7,8 +13,11 @@ _macos_path=( \
 )
 
 if [[ "$OSTYPE" == darwin* ]]; then
-    path=( $path $_macos_path )
+    path=( $path $_macos_path $_global_path)
+else
+    path=( $path $_global_path )
 fi
 
+unset _global_path
 unset _macos_path
 export PATH

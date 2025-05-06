@@ -11,10 +11,6 @@ if [ -d /usr/libexec/java_home ]; then
     export JAVA_HOME=`/usr/libexec/java_home`
 fi
 
-if [ -d $HOME/bin ]; then
-    export PATH=$PATH:$HOME/bin
-fi
-
 # for bat command
 if [ -n "`command -v bat 2>&1`" ]; then
     if [[ "$TERM" == "xterm-256color" ]]; then
@@ -63,8 +59,4 @@ fi
 
 if [ -d $HOME/.config/starship ]; then
     export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
-fi
-
-if [ -d $HOME/.cargo/bin ]; then
-    export PATH=$PATH:$HOME/.cargo/bin
 fi
