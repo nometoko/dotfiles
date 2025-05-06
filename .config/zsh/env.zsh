@@ -33,10 +33,6 @@ if [ -n "`command -v fzf 2>&1`" ]; then
     export FZF_CTRL_T_OPTS='--preview "bat  --color=always --style=header,grid --line-range :100 {}" --delimiter '/' --nth -1'
 fi
 
-if [ -d $HOME/Library/Mobile\ Documents ]; then
-    export ICLOUD_PATH=$HOME/Library/Mobile\ Documents
-fi
-
 # for X11
 if [ -z $DISPLAY ]; then
     export DISPLAY=:0
@@ -45,11 +41,6 @@ fi
 # preamble file path for LaTeX
 if [ -d $HOME/tex ]; then
     export TEXINPUTS=.:$HOME/tex:
-fi
-
-# zcompdump file path
-if [ -n $ZSH ]; then
-    export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 fi
 
 # for pkg-config (opencv4)
