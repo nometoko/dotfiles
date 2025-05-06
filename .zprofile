@@ -1,9 +1,9 @@
 _macos_path=( \
-    /opt/local/bin/ \
-    /opt/local/sbin/ \
+    /opt/local/bin \
+    /opt/local/sbin \
     /opt/local/libexec/gnubin \
-    /Library/Frameworks/Python.framework/Versions/3.12/bin/ \
-    /Applications/LibreOffice.app/Contents/MacOS/ \
+    /Library/Frameworks/Python.framework/Versions/3.12/bin \
+    /Applications/LibreOffice.app/Contents/MacOS \
 )
 
 if [[ "$OSTYPE" == darwin* ]]; then
