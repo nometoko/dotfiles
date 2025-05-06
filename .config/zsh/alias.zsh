@@ -19,7 +19,7 @@ unset FijiPath
 set_alias_if_exists emacs ez 'emacs ~/.zshrc'
 
 if command -v lsd &>/dev/null; then
-    alias ls='lsd'
+    alias ls='lsd -I .DS_Store'
     alias lsn='lsd -v'
 else
     alias ls='/bin/ls -G -F --color=auto'
