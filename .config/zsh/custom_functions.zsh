@@ -28,25 +28,45 @@ del(){
 
 venv () {
     local venv_array=($HOME/venvs/*(/onN:t))
-    if [ $#venv_array = 0 ]; then
-        echo "No backup directory found"
+    local venv_num=${#venv_array}
+
+    local conda_env_array=()
+    if [[ -n `command -v conda 2>&1` ]]; then
+        conda_env_array=($(conda env list | awk '{print $1}' | grep -v '^#'))
+    fi
+
+    if [[ $(( $#venv_array + $#conda_env_array )) -eq 0 ]]; then
+        echo "No venvs found"
         return 1
     fi
+
     echo '[0] quit'
+    echo '----local venvs----'
     for ((i = 1; i <= $#venv_array; i++)) print -r -- "[$i] $venv_array[$i]"
+
+    echo '----conda envs----'
+    for ((i = 1; i <= $#conda_env_array; i++)) print -r -- "[$(( $i + $venv_num ))] $conda_env_array[$i]"
 
     read "index?Select index: "
 
     if [[ "$index" =~ '^[0-9]+$' ]]; then
         if [ $index = '0' ]; then
             return 0
-        elif [ $index -gt $#venv_array ]; then
+        elif [ $index -gt $(( $#venv_array + $#conda_env_array )) ]; then
             echo "Invalid index"
             return 1
         fi
-        venv_name=${venv_array[$index]}
-        echo "Activate $venv_name"
-        source $HOME/venvs/$venv_name/bin/activate
+        env_name=${venv_array[$index]}
+        echo "Activate $env_name"
+
+        if [ $index -le $#venv_array ]; then
+            source $HOME/venvs/$env_name/bin/activate
+        else
+            venv_name=${conda_env_array[$(( $index - $venv_num ))]}
+            conda activate $venv_name
+            alias deactivate='conda deactivate && unalias deactivate'
+        fi
+
     else
         echo "Invalid index"
     fi
@@ -100,8 +120,16 @@ preexec() {
 }
 
 cat() {
-    local BAT_PAGER_TMP=$BAT_PAGER
-    export BAT_PAGER=""
+    local bat_pager_tmp=$BAT_PAGER
+    BAT_PAGER=""
     bat --plain $1
-    export BAT_PAGER=$BAT_PAGET_TMP
+    export BAT_PAGER=$bat_pager_tmp
+    unset bat_pager_tmp
+}
+
+unlink() {
+    # 引数すべて処理
+    for arg in "$@"; do
+        /bin/unlink "$arg"
+    done
 }
