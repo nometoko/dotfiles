@@ -52,10 +52,6 @@ if [ -d $HOME/pkgconfig ]; then
     export PKG_CONFIG_PATH=$HOME/pkgconfig:$PKG_CONFIG_PATH
 fi
 
-if [ `uname` = "Darwin" ]; then
-    export CPATH=/opt/local/include:$CPATH
-    export DYLD_FALLBACK_LIBRARY_PATH=/opt/local/lib:$DYLD_FALLBACK_LIBRARY_PATH
-fi
 
 if [ -d $HOME/.config/starship ]; then
     export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml

@@ -14,6 +14,8 @@ _macos_path=( \
 
 if [[ "$OSTYPE" == darwin* ]]; then
     path=( $path $_macos_path $_global_path)
+    export DYLD_FALLBACK_LIBRARY_PATH="/opt/local/lib"
+    export CPATH="/opt/local/include"
 else
     path=( $path $_global_path )
 fi
