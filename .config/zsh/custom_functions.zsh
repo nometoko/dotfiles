@@ -133,3 +133,8 @@ unlink() {
         /bin/unlink "$arg"
     done
 }
+
+latexclean() {
+    fine_basename=${1:r}
+    rm -f $fine_basename.{aux,dvi,fdb_latexmk,fls,log,out,synctex.gz}
+}
