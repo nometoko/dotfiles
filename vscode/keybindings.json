@@ -1,0 +1,58 @@
+// 既定値を上書きするには、このファイル内にキー バインドを挿入します
+[
+  {
+    "key": "Cmd+/", // 使用するショートカットキー
+    "command": "macros.commentAndMoveDown",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "Ctrl + k",
+    "command": "macros.cutLines",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "latex-workshop.build",
+    "when": "!config.latex-workshop.bind.altKeymap.enabled && !virtualWorkspace && editorLangId =~ /^latex$|^latex-expl3$|^doctex$|^rsweave$|^jlweave$|^pweave$/"
+  },
+  {
+    "key": "alt+cmd+b",
+    "command": "-latex-workshop.build",
+    "when": "!config.latex-workshop.bind.altKeymap.enabled && !virtualWorkspace && editorLangId =~ /^latex$|^latex-expl3$|^doctex$|^rsweave$|^jlweave$|^pweave$/"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "latex-workshop.build",
+    "when": "config.latex-workshop.bind.altKeymap.enabled && !virtualWorkspace && editorLangId =~ /^latex$|^latex-expl3$|^doctex$|^rsweave$|^jlweave$|^pweave$/"
+  },
+  {
+    "key": "cmd+l alt+b",
+    "command": "-latex-workshop.build",
+    "when": "config.latex-workshop.bind.altKeymap.enabled && !virtualWorkspace && editorLangId =~ /^latex$|^latex-expl3$|^doctex$|^rsweave$|^jlweave$|^pweave$/"
+  },
+  {
+    "key": "ctrl+c l",
+    "command": "-extension.complete.catex.large"
+  },
+  {
+    "key": "ctrl+c b",
+    "command": "-extension.complete.catex.environment"
+  },
+  {
+    "key": "ctrl+c m",
+    "command": "-extension.complete.catex.maketitle"
+  },
+  {
+    "key": "ctrl+c s",
+    "command": "-extension.complete.catex.section"
+  },
+  {
+    "key": "cmd+k",
+    "command": "latex-workshop.kill",
+    "when": "editorTextFocus && editorLangId == 'latex'"
+  },
+  {
+    "key": "cmd+l",
+    "command": "github.copilot.chat.attachSelection"
+  }
+]

@@ -1,0 +1,409 @@
+{
+  "workbench.colorTheme": "Cyberpunk",
+  // macros
+  "macros": {
+    "cutLines": [
+      "cursorEndSelect",
+      "editor.action.clipboardCutAction",
+      "editor.action.copy"
+    ],
+    "commentAndMoveDown": ["editor.action.commentLine", "cursorDown"]
+  },
+  "[latex]": {
+    "editor.wordSeparators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?。．、，（）「」『』［］｛｝《》てにをはがのともへでや ",
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": true,
+    "editor.suggestSelection": "recentlyUsedByPrefix",
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": false
+    },
+    "editor.bracketPairColorization.enabled": true,
+    "editor.unicodeHighlight.invisibleCharacters": true
+  },
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk",
+      "tools": ["latexmk"]
+    }
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": []
+    }
+  ],
+  "latex-workshop.formatting.latex": "latexindent",
+  "latex-workshop.view.pdf.viewer": "tab",
+  "editor.autoClosingBrackets": "always",
+  "latex-workshop.intellisense.unimathsymbols.enabled": true,
+  "catex.section.dictionary": [
+    {
+      "include": "defaults/sections.json"
+    },
+    {
+      "name": "label",
+      "args": [
+        {
+          "kind": "fixed",
+          "placeholder": "labelname"
+        }
+      ]
+    },
+    {
+      "name": "ctext",
+      "args": [
+        {
+          "kind": "fixed"
+        }
+      ]
+    },
+    {
+      "name": "rowcolor",
+      "args": [
+        {
+          "kind": "optional",
+          "placeholder": "rgb"
+        },
+        {
+          "kind": "fixed"
+        }
+      ]
+    }
+  ],
+  "editor.wordWrap": "on",
+  "catex.environment.dictionary": [
+    {
+      "include": "defaults/environments.json"
+    },
+    {
+      "name": "itembox",
+      "args": [
+        {
+          "kind": "optional"
+        },
+        {
+          "kind": "fixed",
+          "placeholder": "placeholder"
+        }
+      ]
+    },
+    {
+      "name": "table"
+    },
+    {
+      "name": "pmatrix"
+    },
+    {
+      "name": "bmatrix"
+    }
+  ],
+  "redhat.telemetry.enabled": false,
+  "settingsSync.ignoredSettings": [],
+  "workbench.settings.applyToAllProfiles": [],
+  "catex.maketitle.dictionary": [
+    {
+      "include": "defaults/maketitles.json"
+    },
+    "ldots",
+    "cdots",
+    "infty"
+  ],
+  "latex-workshop.intellisense.biblatexJSON.replace": {},
+  "workbench.editorAssociations": {
+    "*.pdf": "latex-workshop-pdf-hook"
+  },
+  "files.autoSave": "onFocusChange",
+  "editor.accessibilitySupport": "off",
+  "terminal.integrated.env.osx": {
+    "Q_NEW_SESSION": "1"
+  },
+  "notebook.output.scrolling": true,
+  // spell checker
+  "cSpell.userWords": [
+    "allclose",
+    "alloc",
+    "arange",
+    "arccos",
+    "arctan",
+    "argmax",
+    "argmin",
+    "arrowprops",
+    "astype",
+    "autocast",
+    "axhline",
+    "axvline",
+    "bfrb",
+    "bibtex",
+    "binalization",
+    "binalize",
+    "binarization",
+    "booktitle",
+    "Caenorhabditis",
+    "Celegans",
+    "chakra",
+    "Channelrhodopsin",
+    "clangd",
+    "clim",
+    "cloudsql",
+    "cmap",
+    "CMOS",
+    "coeff",
+    "colorbar",
+    "Columnwise",
+    "connectionstyle",
+    "conv",
+    "cuda",
+    "cudnn",
+    "DCAM",
+    "Dcamapi",
+    "ddepth",
+    "deeplabcut",
+    "Denoising",
+    "dotenv",
+    "dtype",
+    "dvipdfmx",
+    "edgecolor",
+    "elegans",
+    "elif",
+    "eprint",
+    "facecolor",
+    "feedforward",
+    "fftshift",
+    "fftw",
+    "figsize",
+    "fillna",
+    "fontsize",
+    "fourcc",
+    "fshift",
+    "funasoul",
+    "GABA",
+    "GELU",
+    "GPCR",
+    "grayscale",
+    "hconcat",
+    "headlength",
+    "headwidth",
+    "Hidetaka",
+    "hstack",
+    "icdiff",
+    "ifft",
+    "ifftshift",
+    "iloc",
+    "imread",
+    "imshow",
+    "imwrite",
+    "incollection",
+    "infty",
+    "inplace",
+    "interneurons",
+    "isnan",
+    "issn",
+    "itembox",
+    "iwamoto",
+    "kaggle",
+    "Katex",
+    "keepdim",
+    "kfold",
+    "kmeans",
+    "ksize",
+    "kymogram",
+    "labelsize",
+    "latexdiff",
+    "latexindent",
+    "latexmk",
+    "lazygit",
+    "LBUTTONDOWN",
+    "leftside",
+    "libsbml",
+    "linalg",
+    "markersize",
+    "mathbf",
+    "mathrm",
+    "matmul",
+    "matplotlib",
+    "matplotlibcpp",
+    "meshgrid",
+    "Micromirror",
+    "Mish",
+    "MJPG",
+    "multibody",
+    "myofibril",
+    "napari",
+    "natsorted",
+    "ndarray",
+    "neuromechanical",
+    "newaxis",
+    "nhead",
+    "numpy",
+    "OBJSDIR",
+    "opencv",
+    "optogenetic",
+    "optogenetically",
+    "Optogenetics",
+    "OTSU",
+    "parfor",
+    "pdfsubject",
+    "platex",
+    "popleft",
+    "preds",
+    "proba",
+    "pval",
+    "pvalue",
+    "pycache",
+    "pyplot",
+    "randperm",
+    "Ribonanza",
+    "rightside",
+    "Rowwise",
+    "sarcomere",
+    "savefig",
+    "sbml",
+    "setrecursionlimit",
+    "skimage",
+    "softmax",
+    "softplus",
+    "Spermatheca",
+    "subcaption",
+    "subsec",
+    "texttt",
+    "thre",
+    "thresholding",
+    "Trackbar",
+    "ttest",
+    "unsqueeze",
+    "venv",
+    "wilcoxon",
+    "wormatlas",
+    "xctoolchain",
+    "xlabel",
+    "xlim",
+    "xticks",
+    "xytext",
+    "yaxis",
+    "ylabel",
+    "yticks",
+    "zenn",
+    "zorder"
+  ],
+  "cSpell.ignorePaths": [
+    "**/package-lock.json",
+    "**/node_modules/**",
+    "**/vscode-extension/**",
+    "**/.git/objects/**",
+    ".vscode",
+    "**/Code/**",
+    "refs.bib"
+  ],
+  "#cSpell.enableFiletypes": ["python"],
+  "python.defaultInterpreterPath": "/opt/local/bin/python",
+  "security.workspace.trust.untrustedFiles": "open",
+  "workbench.startupEditor": "none",
+  "jupyter.askForKernelRestart": false,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "cmake.pinnedCommands": [
+    "workbench.action.tasks.configureTaskRunner",
+    "workbench.action.tasks.runTask"
+  ],
+  "cmake.options.statusBarVisibility": "icon",
+  "git.openRepositoryInParentFolders": "always",
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "gitlens.advanced.messages": {
+    "suppressLineUncommittedWarning": true
+  },
+  "editor.largeFileOptimizations": false,
+  "makefile.configureOnOpen": false,
+  "C_Cpp.errorSquiggles": "enabled",
+  "C_Cpp.codeAnalysis.exclude": {
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include/**": true
+  },
+  "C_Cpp.default.includePath": [
+    "/opt/local/include",
+    "/opt/local/include/opencv4",
+    "${workspaceFolder}/include"
+  ],
+  "editor.codeActions.triggerOnFocusChange": true,
+  "python.analysis.inlayHints.functionReturnTypes": true,
+  "C_Cpp.inlayHints.referenceOperator.enabled": true,
+  // todo tree
+  "todo-tree.regex.regex": "((//|#|<!--|;|/\\*|^|%|\\\\)\\s*($TAGS)\\{*|^\\s*- \\[ \\])",
+  "todo-tree.highlights.defaultHighlight": {
+    "icon": "alert",
+    "type": "text",
+    "foreground": "white",
+    "background": "red",
+    "opacity": 50,
+    "iconColour": "blue"
+  },
+  "todo-tree.highlights.customHighlight": {
+    "TODO": {
+      "icon": "check",
+      "iconColour": "red",
+      "type": "line"
+    },
+    "FIXME": {
+      "iconColour": "yellow",
+      "background": "yellow",
+      "foreground": "black",
+      "gutterIcon": true
+    }
+  },
+  "material-icon-theme.folders.theme": "classic",
+  "latex-workshop.formatting.latexindent.args": [
+    "-c",
+    "%DIR%/",
+    "%TMPFILE%",
+    "-y=defaultIndent: '  '"
+  ],
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.stickyScroll.enabled": false,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "editor.formatOnSave": true,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": true,
+    "scminput": false
+  },
+  "pasteImage.basePath": "${currentFileDir}/figures",
+  "terminal.integrated.commandsToSkipShell": ["matlab.interrupt"],
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "vim.leader": "<space>",
+  "vim.useSystemClipboard": true,
+  // ノーマルモードでのキーバインディングを設定（再帰的でない）
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      // <space><space>でファイルの曖昧検索（Quick Open）を呼び出す
+      "before": ["<leader>", "<leader>"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      // <space>/でファイル内容の検索（Find in Files）を呼び出す
+      "before": ["<leader>", "/"],
+      "commands": ["workbench.action.findInFiles"]
+    },
+    {
+      "before": ["H"],
+      "commands": ["workbench.action.previousEditor"]
+    },
+    {
+      "before": ["L"],
+      "commands": ["workbench.action.nextEditor"]
+    }
+  ],
+  "MATLAB.installPath": "/Applications/MATLAB_R2025a.app",
+  "editor.formatOnPaste": true,
+  "C_Cpp.clang_format_fallbackStyle": "Google",
+  "C_Cpp.codeAnalysis.clangTidy.codeAction.showDisable": false,
+  "C_Cpp.loggingLevel": "Warning",
+  "C_Cpp.codeAnalysis.clangTidy.enabled": true
+}
