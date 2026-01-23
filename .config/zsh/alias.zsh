@@ -37,6 +37,7 @@ alias llat='ls -lAt'
 alias -g G="| grep -i --color=auto"
 alias o.="open ."
 alias remake="make clean && make"
+alias rsync="rsync --exclude \".venv\" --exclude \"__pycache__\" --exclude .DS_Store"
 alias sz='source ~/.zshrc'
 
 if [ -f "$HOME/.config/kitty/kitty.conf" ]; then
