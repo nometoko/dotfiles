@@ -138,3 +138,68 @@ latexclean() {
     fine_basename=${1:r}
     rm -f $fine_basename.{aux,dvi,fdb_latexmk,fls,log,out,synctex.gz}
 }
+
+layout_anaconda() {
+  local nm=$1
+  if [ -n "$nm" ]; then
+    conda activate "$nm"
+  else
+    echo "No environment name specified"
+  fi
+}
+
+git() {
+  # 最初の引数が 'clone' の場合
+  if [[ "$1" == "clone" ]]; then
+    # まず本来の git clone を実行
+    command git "$@"
+    local exit_code=$?
+
+    # clone が成功 (exit code 0) した場合のみ処理を行う
+    if [[ $exit_code -eq 0 ]]; then
+      local target_dir=""
+      local url=""
+
+      # 引数を解析してターゲットディレクトリを特定する
+      # "${@:2}" で 2番目の引数(cloneの次)からループ処理
+      for arg in "${@:2}"; do
+        if [[ ! "$arg" == -* ]]; then # -b や --depth などのオプションをスキップ
+           if [[ -z "$url" ]]; then
+             url="$arg" # 最初の非オプション引数をURLとする
+           else
+             target_dir="$arg" # 2番目の非オプション引数をターゲットディレクトリとする
+           fi
+        fi
+      done
+
+      # ターゲットディレクトリが指定されていない場合は URL からディレクトリ名を推測
+      if [[ -z "$target_dir" ]]; then
+         target_dir=$(basename "$url" .git)
+      fi
+
+      # クローン先の絶対パスを取得 (macOS / Ubuntu 両対応の記述)
+      local abs_target_dir=$(cd "$target_dir" >&/dev/null && pwd)
+
+      if [[ -n "$abs_target_dir" ]]; then
+        local symlink_dir="$HOME/git"
+        local symlink_path="$symlink_dir/$(basename "$abs_target_dir")"
+        echo "abs_target_dir: $abs_target_dir"
+
+        # ~/git ディレクトリが存在しなければ作成
+        mkdir -p "$symlink_dir"
+
+        # シンボリックリンクの作成
+        if [[ ! -e "$symlink_path" ]]; then
+          ln -s "$abs_target_dir" "$symlink_path"
+          echo -e "\nlinked:\n$symlink_path -> $abs_target_dir"
+        else
+          echo -e "\nthe file or link which has same name already exists:\n$symlink_path"
+        fi
+      fi
+    fi
+    return $exit_code
+  else
+    # clone 以外のコマンドはそのまま実行
+    command git "$@"
+  fi
+}
