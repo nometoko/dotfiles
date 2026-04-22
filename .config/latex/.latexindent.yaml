@@ -1,0 +1,30 @@
+lookForAlignDelims:
+    align:
+        delims: 0
+        alignDoubleBackSlash: 0
+    align*:
+        delims: 0
+        alignDoubleBackSlash: 0
+    pmatrix:
+        alignDoubleBackSlash: 0
+    # tabular:
+    #     delims: 0
+    #     alignDoubleBackSlash: 0
+    #     spacesBeforeDoubleBackSlash: 1
+    #     multiColumnGrouping: 0
+    #     alignRowsWithoutMaxDelims: 1
+    #     spacesBeforeAmpersand: 1
+    #     spacesAfterAmpersand: 1
+    #     justification: left
+    #     alignFinalDoubleBackSlash: 0
+    #     dontMeasure: 0
+    #     delimiterRegEx: '(?<!\\)(&)'
+    #     delimiterJustification: left
+    # array:
+    #     alignDoubleBackSlash: 0
+    #     delims: 0
+    #     spacesBeforeAmpersand: 1
+
+
+defaultIndent: "  "
+
