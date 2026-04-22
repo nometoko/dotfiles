@@ -12,10 +12,6 @@ EmacsPath="/Applications/MacPorts/Emacs.app/Contents/MacOS/Emacs"
 set_alias_if_path_exists $EmacsPath emacs "$EmacsPath -nw"
 unset EmacsPath
 
-FijiPath='/Applications/Fiji.app/Contents/MacOS/ImageJ-macosx'
-set_alias_if_exists $FijiPath fiji "$FijiPath"
-unset FijiPath
-
 set_alias_if_exists emacs ez 'emacs ~/.zshrc'
 
 if command -v lsd &>/dev/null; then
