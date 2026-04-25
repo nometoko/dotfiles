@@ -11,19 +11,9 @@
     "when": "editorTextFocus && !editorReadonly"
   },
   {
-    "key": "ctrl+r",
-    "command": "latex-workshop.build",
-    "when": "!config.latex-workshop.bind.altKeymap.enabled && !virtualWorkspace && editorLangId =~ /^latex$|^latex-expl3$|^doctex$|^rsweave$|^jlweave$|^pweave$/"
-  },
-  {
     "key": "alt+cmd+b",
     "command": "-latex-workshop.build",
     "when": "!config.latex-workshop.bind.altKeymap.enabled && !virtualWorkspace && editorLangId =~ /^latex$|^latex-expl3$|^doctex$|^rsweave$|^jlweave$|^pweave$/"
-  },
-  {
-    "key": "ctrl+r",
-    "command": "latex-workshop.build",
-    "when": "config.latex-workshop.bind.altKeymap.enabled && !virtualWorkspace && editorLangId =~ /^latex$|^latex-expl3$|^doctex$|^rsweave$|^jlweave$|^pweave$/"
   },
   {
     "key": "cmd+l alt+b",
