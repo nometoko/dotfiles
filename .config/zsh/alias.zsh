@@ -45,7 +45,7 @@ fi
 set_alias_if_exists direnv da 'direnv allow'
 
 # tree
-set_alias_if_exists tree tree 'tree -a -I "\.DS_Store|\.git|\.venv"'
+set_alias_if_exists tree tree 'tree -a -I "\.DS_Store|\.git|\.venv|__pycache__"'
 
 # vscode
 set_alias_if_exists code cz 'code ~/.zsh'
@@ -78,7 +78,7 @@ set_alias_if_exists lazygit lz 'lazygit'
 
 # ssh for kitty
 if [[ "$TERM" == "xterm-kitty" ]]; then
-    alias ssh="kitten ssh"
+    [[ -z "$SSH_CONNECTION" ]] && alias ssh="kitten ssh"
     alias pbcopy="kitten clipboard"
 fi
 
