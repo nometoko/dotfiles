@@ -203,3 +203,9 @@ git() {
     command git "$@"
   fi
 }
+
+_ssh_hosts() {
+  local -a _hosts
+  _hosts=($(command sed -ne '/^\s*Host\s*/{ s/^\s*Host\s*//; p; }' ~/.ssh/config))
+  _describe -t hosts 'Remote Hosts' _hosts
+}
