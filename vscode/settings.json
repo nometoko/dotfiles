@@ -1,0 +1,595 @@
+{
+  // ============================================================
+  // Workbench / General
+  // ============================================================
+  "workbench.colorTheme": "Monokai",
+  "workbench.startupEditor": "none",
+  "workbench.editorAssociations": {
+    "*.pdf": "latex-workshop-pdf-hook",
+  },
+  "workbench.settings.applyToAllProfiles": [],
+  "settingsSync.ignoredSettings": [],
+  "security.workspace.trust.untrustedFiles": "open",
+  "redhat.telemetry.enabled": false,
+  "editor.autoClosingBrackets": "always",
+  "editor.accessibilitySupport": "off",
+  "editor.largeFileOptimizations": false,
+  "editor.stickyScroll.enabled": false,
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.codeActions.triggerOnFocusChange": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.ruff": "explicit",
+    "source.organizeImports.ruff": "explicit",
+  },
+  "diffEditor.ignoreTrimWhitespace": false,
+
+  // ============================================================
+  // Files
+  // ============================================================
+  "files.autoSave": "onFocusChange",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+
+  // ============================================================
+  // Explorer
+  // ============================================================
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+
+  // ============================================================
+  // Terminal
+  // ============================================================
+  "terminal.integrated.env.osx": {
+    "Q_NEW_SESSION": "1",
+  },
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "terminal.integrated.commandsToSkipShell": ["matlab.interrupt"],
+  "terminal.integrated.suggest.enabled": false,
+
+  // ============================================================
+  // Git
+  // ============================================================
+  "git.openRepositoryInParentFolders": "always",
+  "gitlens.advanced.messages": {
+    "suppressLineUncommittedWarning": true,
+  },
+
+  // ============================================================
+  // Notebook / Jupyter
+  // ============================================================
+  "notebook.output.scrolling": true,
+  "jupyter.askForKernelRestart": false,
+
+  // ============================================================
+  // GitHub Copilot
+  // ============================================================
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": true,
+    "markdown": false,
+    "scminput": false,
+    "latex": true,
+    "python": true,
+    "jsonc": true,
+    "cpp": true
+  },
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "chat.agent.maxRequests": 50,
+  "chat.tools.terminal.autoApprove": {
+    "/.*/": true,
+    "python3 -.*": true,
+    "rm": false,
+  },
+
+  // ============================================================
+  // Vim
+  // ============================================================
+  "vim.leader": "<space>",
+  "vim.useSystemClipboard": true,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      // <space><space>でファイルの曖昧検索（Quick Open）を呼び出す
+      "before": ["<leader>", "<leader>"],
+      "commands": ["workbench.action.quickOpen"],
+    },
+    {
+      // <space>/でファイル内容の検索（Find in Files）を呼び出す
+      "before": ["<leader>", "/"],
+      "commands": ["workbench.action.findInFiles"],
+    },
+    {
+      "before": ["H"],
+      "commands": ["workbench.action.previousEditor"],
+    },
+    {
+      "before": ["L"],
+      "commands": ["workbench.action.nextEditor"],
+    },
+  ],
+
+  // ============================================================
+  // Macros
+  // ============================================================
+  "macros": {
+    "cutLines": [
+      "cursorEndSelect",
+      "editor.action.clipboardCutAction",
+      "editor.action.copy",
+    ],
+    "commentAndMoveDown": ["editor.action.commentLine", "cursorDown"],
+  },
+
+  // ============================================================
+  // Python
+  // ============================================================
+  "python.defaultInterpreterPath": "/opt/local/bin/python",
+  "python.analysis.inlayHints.functionReturnTypes": true,
+  "python.languageServer": "None",
+
+  // ============================================================
+  // Ruff (Python Linter/Formatter)
+  // ============================================================
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+  },
+  "ruff.path": ["/opt/local/bin/ruff"],
+  "ruff.interpreter": ["/opt/local/bin/python"],
+  "ruff.lineLength": 120,
+  "ruff.format.preview": false,
+  "ruff.configurationPreference": "filesystemFirst",
+  "ruff.lint.select": ["ALL"],
+  "ruff.lint.extendSelect": ["ALL"],
+  "ruff.lint.ignore": [
+    "T201",
+    "D105",
+    "D107",
+    "D212",
+    "D400",
+    "D413",
+    "D415",
+    "INP001",
+    "ERA001",
+    "RET504",
+    "SIM108",
+  ],
+
+  // ============================================================
+  // C/C++
+  // ============================================================
+  "C_Cpp.errorSquiggles": "enabled",
+  "C_Cpp.loggingLevel": "Warning",
+  "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, ColumnLimit: 120, BinPackParameters: true, BinPackArguments: true }",
+  "C_Cpp.inlayHints.referenceOperator.enabled": true,
+  "C_Cpp.codeAnalysis.clangTidy.enabled": true,
+  "C_Cpp.codeAnalysis.clangTidy.codeAction.showDisable": false,
+  "C_Cpp.codeAnalysis.exclude": {
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include/**": true,
+  },
+  "C_Cpp.default.includePath": [
+    "/opt/local/include",
+    "/opt/local/include/opencv4",
+    "${workspaceFolder}/include",
+  ],
+
+  // ============================================================
+  // Clangd
+  // 1. Microsoft C/C++ 拡張機能の IntelliSense を無効化（clangdと競合するため）
+  // 2. clangd のパス（インストール済みなら空でもOK、必要ならフルパスを記述）
+  "clangd.path": "/opt/local/bin/clangd",
+  // 3. clangd への引数設定
+  "clangd.arguments": [
+    "--log=verbose",
+    "--pretty",
+    // 全てのコアを使って並列インデックス作成
+    "-j=12",
+    // googleスタイルをベースに命名規則をチェック
+    "--fallback-style={ BasedOnStyle: Google, ColumnLimit: 120, BinPackParameters: true, BinPackArguments: true }",
+    "--clang-tidy",
+    // コンパイルデータベース（compile_commands.json）の場所を指定
+    "--compile-commands-dir=build",
+    // 補完のスタイルを詳細にする
+    "--completion-style=detailed",
+    // 背景でのインデックス作成を許可
+    "--background-index",
+    // ヘッダー挿入を自動で行う
+    "--header-insertion=iwyu",
+    "--header-insertion-decorators",
+  ],
+  "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
+  "[c]": {
+    "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
+    "editor.formatOnSave": false
+  },
+  "[cpp]": {
+    "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+  },
+
+  // ============================================================
+  // CMake / Makefile
+  // ============================================================
+  "cmake.pinnedCommands": [
+    "workbench.action.tasks.configureTaskRunner",
+    "workbench.action.tasks.runTask",
+  ],
+  "cmake.options.statusBarVisibility": "icon",
+  "makefile.configureOnOpen": false,
+
+  // ============================================================
+  // LaTeX
+  // ============================================================
+  "[latex]": {
+    "editor.wordSeparators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?。．、，（）「」『』［］｛｝《》てにをはがのともへでや ",
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": true,
+    "editor.suggestSelection": "recentlyUsedByPrefix",
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": false,
+    },
+    "editor.bracketPairColorization.enabled": true,
+    "editor.unicodeHighlight.invisibleCharacters": true,
+    "editor.wordBasedSuggestions": "off",
+    "editor.defaultFormatter": "James-Yu.latex-workshop",
+  },
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.formatting.latex": "latexindent",
+  "latex-workshop.formatting.latexindent.args": [
+    "-c",
+    "%DIR%/",
+    "%TMPFILE%",
+    "-y=defaultIndent: '  '",
+  ],
+  "latex-workshop.intellisense.biblatexJSON.replace": {},
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk",
+      "tools": ["latexmk"],
+    },
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk",
+      "command": "make",
+      "args": [],
+    },
+  ],
+
+  // ============================================================
+  // CaTeX (LaTeX snippets)
+  // ============================================================
+  "catex.section.dictionary": [
+    { "include": "defaults/sections.json" },
+    {
+      "name": "label",
+      "args": [{ "kind": "fixed", "placeholder": "labelname" }],
+    },
+    { "name": "ctext", "args": [{ "kind": "fixed" }] },
+    {
+      "name": "rowcolor",
+      "args": [
+        { "kind": "optional", "placeholder": "rgb" },
+        { "kind": "fixed" },
+      ],
+    },
+  ],
+  "catex.environment.dictionary": [
+    { "include": "defaults/environments.json" },
+    {
+      "name": "itembox",
+      "args": [
+        { "kind": "optional" },
+        { "kind": "fixed", "placeholder": "placeholder" },
+      ],
+    },
+    { "name": "table" },
+    { "name": "pmatrix" },
+    { "name": "bmatrix" },
+  ],
+  "catex.maketitle.dictionary": [
+    { "include": "defaults/maketitles.json" },
+    "ldots",
+    "cdots",
+    "infty",
+  ],
+
+  // ============================================================
+  // TypeScript / React
+  // ============================================================
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features",
+  },
+
+  // ============================================================
+  // MATLAB
+  // ============================================================
+  "MATLAB.installPath": "/Applications/MATLAB_R2025a.app",
+
+  // ============================================================
+  // Spell Checker (cSpell)
+  // ============================================================
+  "#cSpell.enableFiletypes": ["python"],
+  "cSpell.ignorePaths": [
+    "**/package-lock.json",
+    "**/node_modules/**",
+    "**/vscode-extension/**",
+    "**/.git/objects/**",
+    ".vscode",
+    "**/Code/**",
+    "refs.bib",
+  ],
+  "cSpell.userWords": [
+    "allclose",
+    "alloc",
+    "arange",
+    "arccos",
+    "arctan",
+    "argmax",
+    "argmin",
+    "arrowprops",
+    "astype",
+    "autocast",
+    "axhline",
+    "axvline",
+    "bfrb",
+    "bibtex",
+    "binalization",
+    "binalize",
+    "binarization",
+    "binarize",
+    "blit",
+    "booktitle",
+    "Caenorhabditis",
+    "Celegans",
+    "chakra",
+    "Channelrhodopsin",
+    "clangd",
+    "clim",
+    "cloudsql",
+    "cmap",
+    "CMOS",
+    "coeff",
+    "colorbar",
+    "Columnwise",
+    "connectionstyle",
+    "conv",
+    "corrcoef",
+    "cuda",
+    "cudnn",
+    "DCAM",
+    "Dcamapi",
+    "ddepth",
+    "deap",
+    "deeplabcut",
+    "Denoising",
+    "dotenv",
+    "dtype",
+    "dvipdfmx",
+    "edgecolor",
+    "edgecolors",
+    "elegans",
+    "elif",
+    "eprint",
+    "facecolor",
+    "fastmath",
+    "fbfill",
+    "feedforward",
+    "fftshift",
+    "fftw",
+    "figsize",
+    "fillna",
+    "finfo",
+    "fliersize",
+    "fontsize",
+    "fontweight",
+    "fourcc",
+    "fshift",
+    "funasoul",
+    "GABA",
+    "GELU",
+    "getxattr",
+    "GPCR",
+    "grayscale",
+    "hconcat",
+    "headlength",
+    "headwidth",
+    "Hidetaka",
+    "hstack",
+    "icdiff",
+    "idxs",
+    "ifft",
+    "ifftshift",
+    "iloc",
+    "imread",
+    "imshow",
+    "imwrite",
+    "incollection",
+    "infty",
+    "inplace",
+    "interneurons",
+    "isin",
+    "isnan",
+    "issn",
+    "itembox",
+    "iwamoto",
+    "kaggle",
+    "Katex",
+    "keepdim",
+    "kfold",
+    "kmeans",
+    "ksize",
+    "kymo",
+    "kymogram",
+    "labelsize",
+    "latexdiff",
+    "latexindent",
+    "latexmk",
+    "lazygit",
+    "LBUTTONDOWN",
+    "leftside",
+    "libsbml",
+    "lightgreen",
+    "linalg",
+    "lineplot",
+    "linestyle",
+    "loadtxt",
+    "markersize",
+    "mathbf",
+    "mathrm",
+    "matmul",
+    "matplotlib",
+    "matplotlibcpp",
+    "medianprops",
+    "meshgrid",
+    "Micromirror",
+    "Mish",
+    "MJPG",
+    "multibody",
+    "myofibril",
+    "napari",
+    "natsorted",
+    "ncol",
+    "ndarray",
+    "ndimage",
+    "neuro",
+    "neuromechanical",
+    "newaxis",
+    "nhead",
+    "njit",
+    "nrows",
+    "numpy",
+    "OBJSDIR",
+    "ofstream",
+    "opencv",
+    "opto",
+    "optogenetic",
+    "optogenetically",
+    "Optogenetics",
+    "OTSU",
+    "parfor",
+    "pdfsubject",
+    "pearsonr",
+    "platex",
+    "popleft",
+    "preds",
+    "printoptions",
+    "proba",
+    "probplot",
+    "pval",
+    "pvalue",
+    "pycache",
+    "pyplot",
+    "randn",
+    "randperm",
+    "Ribonanza",
+    "rightside",
+    "RMDD",
+    "Rowwise",
+    "rtol",
+    "sarcomere",
+    "savefig",
+    "sbml",
+    "scikits",
+    "setrecursionlimit",
+    "skimage",
+    "SMDD",
+    "softmax",
+    "softplus",
+    "spatiotemporally",
+    "Spermatheca",
+    "stripplot",
+    "subcaption",
+    "subsec",
+    "suptitle",
+    "texttt",
+    "thre",
+    "thresholding",
+    "Trackbar",
+    "ttest",
+    "unsqueeze",
+    "venv",
+    "verticalalignment",
+    "vmax",
+    "vmin",
+    "wilcoxon",
+    "wormatlas",
+    "xattr",
+    "xctoolchain",
+    "xlabel",
+    "xlim",
+    "xticks",
+    "xytext",
+    "yaxis",
+    "ydot",
+    "ylabel",
+    "ylim",
+    "yticks",
+    "zenn",
+    "zorder"
+  ],
+
+  // ============================================================
+  // Todo Tree
+  // ============================================================
+  "todo-tree.regex.regex": "((//|#|<!--|;|/\\*|^|%|\\\\)\\s*($TAGS)\\{*|^\\s*- \\[ \\])",
+  "todo-tree.highlights.defaultHighlight": {
+    "icon": "alert",
+    "type": "text",
+    "foreground": "#FFFFFF",
+    "background": "#FF0000",
+    "opacity": 50,
+    "iconColour": "#0000FF",
+  },
+  "todo-tree.highlights.customHighlight": {
+    "TODO": {
+      "icon": "check",
+      "iconColour": "#FF0000",
+      "type": "line",
+    },
+    "FIXME": {
+      "iconColour": "yellow",
+      "background": "yellow",
+      "foreground": "black",
+      "gutterIcon": true,
+    },
+    "NOTE": {
+      "icon": "note",
+      "type": "line",
+      "background": "#007FFF", // Azure blue
+      "foreground": "#FFFFFF", // White
+    },
+  },
+
+  // ============================================================
+  // Other Extensions
+  // ============================================================
+  "material-icon-theme.folders.theme": "classic",
+  "pasteImage.basePath": "${currentFileDir}/figures",
+  "extensions.ignoreRecommendations": true,
+  "files.exclude": {
+    "**/*.aux": true,
+    "**/*.dvi": true,
+    "**/*.fdb_latexmk": true,
+    "**/*.fls": true,
+    "**/*.synctex.gz": true,
+  },
+  "todo-tree.general.tags": [
+    "BUG",
+    "HACK",
+    "FIXME",
+    "TODO",
+    "XXX",
+    "[ ]",
+    "[x]",
+    "NOTE",
+  ],
+  "C_Cpp.intelliSenseEngine": "disabled",
+  "notebook.lineNumbers": "on",
+  "clang-format.language.apex.enable": false,
+  "evenBetterToml.formatter.columnWidth": 120,
+  "clang-format.language.c.enable": false,
+  "clangd.checkUpdates": true,
+}

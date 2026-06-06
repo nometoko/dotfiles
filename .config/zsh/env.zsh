@@ -5,7 +5,7 @@ export WORDCHARS='*?_-.[]~=&;!#$%^(){}<'
 export EDITOR='vim'
 
 # 以下の拡張子を持つファイルは保管候補に出さない
-fignore=(.o .aux .log .bbl .blg .lof .dvi .fls .fdb_latexmk .synctex.gz .lot .toc .out .a\~ DS_Store)
+fignore=(.o .aux .bbl .blg .lof .dvi .fls .fdb_latexmk .synctex.gz .lot .toc .out .a\~ DS_Store)
 
 if [ -d /usr/libexec/java_home ]; then
     export JAVA_HOME=`/usr/libexec/java_home`
@@ -52,10 +52,6 @@ if [ -d $HOME/pkgconfig ]; then
     export PKG_CONFIG_PATH=$HOME/pkgconfig:$PKG_CONFIG_PATH
 fi
 
-if [ `uname` = "Darwin" ]; then
-    export CPATH=/opt/local/include:$CPATH
-    export DYLD_FALLBACK_LIBRARY_PATH=/opt/local/lib:$DYLD_FALLBACK_LIBRARY_PATH
-fi
 
 if [ -d $HOME/.config/starship ]; then
     export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml

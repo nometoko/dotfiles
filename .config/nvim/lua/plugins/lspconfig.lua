@@ -1,5 +1,12 @@
 return {
   "neovim/nvim-lspconfig",
+  init = function()
+    vim.filetype.add({
+      extension = {
+        tpp = "cpp",
+      },
+    })
+  end,
   opts = {
     servers = {
       -- Ensure mason installs the server

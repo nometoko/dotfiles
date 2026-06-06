@@ -1,0 +1,6 @@
+xtick.direction : in
+ytick.direction : in
+axes.labelsize  : 18
+
+xtick.labelsize : 14
+ytick.labelsize : 14

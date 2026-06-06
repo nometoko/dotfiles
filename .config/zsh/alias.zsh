@@ -12,10 +12,6 @@ EmacsPath="/Applications/MacPorts/Emacs.app/Contents/MacOS/Emacs"
 set_alias_if_path_exists $EmacsPath emacs "$EmacsPath -nw"
 unset EmacsPath
 
-FijiPath='/Applications/Fiji.app/Contents/MacOS/ImageJ-macosx'
-set_alias_if_exists $FijiPath fiji "$FijiPath"
-unset FijiPath
-
 set_alias_if_exists emacs ez 'emacs ~/.zshrc'
 
 if command -v lsd &>/dev/null; then
@@ -37,6 +33,7 @@ alias llat='ls -lAt'
 alias -g G="| grep -i --color=auto"
 alias o.="open ."
 alias remake="make clean && make"
+alias rsync="rsync --exclude \".venv\" --exclude \"__pycache__\" --exclude .DS_Store"
 alias sz='source ~/.zshrc'
 
 if [ -f "$HOME/.config/kitty/kitty.conf" ]; then
@@ -48,7 +45,7 @@ fi
 set_alias_if_exists direnv da 'direnv allow'
 
 # tree
-set_alias_if_exists tree tree 'tree -a -I "\.DS_Store|\.git|\.venv"'
+set_alias_if_exists tree tree 'tree -a -I "\.DS_Store|\.git|\.venv|__pycache__"'
 
 # vscode
 set_alias_if_exists code cz 'code ~/.zsh'
@@ -81,7 +78,7 @@ set_alias_if_exists lazygit lz 'lazygit'
 
 # ssh for kitty
 if [[ "$TERM" == "xterm-kitty" ]]; then
-    alias ssh="kitten ssh"
+    [[ -z "$SSH_CONNECTION" ]] && alias ssh="kitten ssh"
     alias pbcopy="kitten clipboard"
 fi
 
