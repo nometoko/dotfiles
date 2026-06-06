@@ -30,6 +30,7 @@ return {
           "--enable-config",
           "--header-insertion=iwyu",
           "--completion-style=detailed",
+          -- "--extra-arg-before=-std=c++17",
           "--function-arg-placeholders",
           "--fallback-style=none",
         },
@@ -37,6 +38,9 @@ return {
           usePlaceholders = true,
           completeUnimported = true,
           clangdFileStatus = true,
+          fallbackFlags = {
+            "-std=c++17",
+          },
         },
       },
       pyright = {
